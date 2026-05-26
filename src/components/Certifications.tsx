@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Reveal from './Reveal';
 import Parallax from './Parallax';
 import TiltCard from './TiltCard';
-import { Award } from './icons';
+import { Award, ExternalLink } from './icons';
 import { Container, Section, Eyebrow, SectionTitle, SectionSub } from '../styles/ui';
 import { certifications } from '../data/content';
 
@@ -40,6 +40,24 @@ const Card = styled(TiltCard)`
   }
 `;
 
+const BadgeLink = styled.a`
+  display: inline-block;
+  margin-bottom: 16px;
+  transition: transform 0.25s ease, filter 0.25s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 18px rgba(34, 211, 238, 0.35));
+  }
+`;
+
+const BadgeImg = styled.img`
+  display: block;
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+`;
+
 const CertIcon = styled.div`
   width: 44px;
   height: 44px;
@@ -65,6 +83,26 @@ const Issuer = styled.div`
   margin-bottom: 12px;
 `;
 
+const VerifyLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.accent2};
+
+  & svg {
+    width: 13px;
+    height: 13px;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover svg {
+    transform: translate(2px, -2px);
+  }
+`;
+
 export default function Certifications() {
   return (
     <Section id="certifications">
@@ -79,6 +117,7 @@ export default function Certifications() {
           <Reveal i={2}>
             <SectionSub>
               Formal validation of my delivery leadership and forward-looking practice.
+              Each badge links to its public Credly verification.
             </SectionSub>
           </Reveal>
         </Parallax>
@@ -86,12 +125,28 @@ export default function Certifications() {
         <Grid>
           {certifications.map((c, i) => (
             <Card key={c.title} i={i}>
-              <CertIcon>
-                <Award />
-              </CertIcon>
+              {c.image && c.url ? (
+                <BadgeLink
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Verify ${c.title} on Credly`}
+                >
+                  <BadgeImg src={c.image} alt={`${c.title} badge`} loading="lazy" />
+                </BadgeLink>
+              ) : (
+                <CertIcon>
+                  <Award />
+                </CertIcon>
+              )}
               <Issuer>{c.issuer}</Issuer>
               <h3>{c.title}</h3>
               <p>{c.desc}</p>
+              {c.url && (
+                <VerifyLink href={c.url} target="_blank" rel="noopener noreferrer">
+                  Verify on Credly <ExternalLink />
+                </VerifyLink>
+              )}
             </Card>
           ))}
         </Grid>
