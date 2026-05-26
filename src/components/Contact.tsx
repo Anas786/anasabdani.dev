@@ -36,7 +36,10 @@ const Panel = styled(Reveal)`
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  /* minmax(0, …) prevents grid items' min-content from forcing tracks wider
+     than the padded content area — without it the inner content was getting
+     clipped on the right at mobile widths. */
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: clamp(32px, 5vw, 64px);
   align-items: center;
   border-radius: ${({ theme }) => theme.radius.lg};
@@ -48,7 +51,7 @@ const Panel = styled(Reveal)`
   padding: clamp(32px, 5vw, 60px);
 
   @media (max-width: 760px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 `;
 

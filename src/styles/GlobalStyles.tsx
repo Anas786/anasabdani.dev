@@ -10,6 +10,9 @@ export const GlobalStyles = createGlobalStyle`
   html {
     scroll-behavior: smooth;
     scroll-padding-top: ${({ theme }) => theme.layout.navH};
+    /* Defense in depth — mobile Safari can still side-scroll even with
+       overflow-x: hidden on body, so we clip at the html level too. */
+    overflow-x: clip;
   }
 
   body {
@@ -20,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow-x: clip;
     transition: background 0.25s ease, color 0.25s ease;
   }
 

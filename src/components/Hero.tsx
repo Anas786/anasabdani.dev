@@ -44,6 +44,9 @@ const Section = styled.section`
   align-items: center;
   padding-top: calc(${({ theme }) => theme.layout.navH} + 24px);
   padding-bottom: 60px;
+  /* Contain the rotating PortraitAurora — its bounding box swells with rotation
+     and was pushing document scrollWidth past the viewport on mobile. */
+  overflow-x: clip;
 `;
 
 const Grid = styled.div`
