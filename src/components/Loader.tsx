@@ -9,6 +9,9 @@ const Wrap = styled(motion.div)`
   z-index: 1000;
   display: grid;
   place-items: center;
+  /* Never intercept clicks — the Loader is purely visual. Without this,
+     it can swallow taps on the nav menu during its exit fade. */
+  pointer-events: none;
   background:
     radial-gradient(700px 500px at 50% 35%, rgba(59, 130, 246, 0.12), transparent 70%),
     ${({ theme }) => theme.colors.bg};

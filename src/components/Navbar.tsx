@@ -102,7 +102,9 @@ const MobileMenu = styled(motion.div)`
   backdrop-filter: ${({ theme }) => theme.blur};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   padding: 16px 24px 26px;
-  overflow: hidden;
+  /* No overflow: hidden — motion's height: 'auto' animation was flaking and
+     clipping links beneath the natural padding, so we animate opacity + y
+     instead and let the menu size naturally. */
 
   & ul {
     list-style: none;
@@ -192,10 +194,10 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <MobileMenu
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
           >
             <ul>
               {navLinks.map((l) => (

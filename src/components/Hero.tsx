@@ -308,7 +308,10 @@ const PortraitCard = styled(motion.div)`
   }
 
   @media (max-width: 600px) {
-    position: static;
+    /* position: relative (not static) so the base z-index: 2 still applies —
+       Frame above creates a z-index:1 stacking context that would otherwise
+       cover the top of the card and hide the role title. */
+    position: relative;
     transform: none;
     left: auto;
     bottom: auto;
