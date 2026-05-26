@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#09090b" />
+
+    <!-- Set theme before paint to avoid flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+
+    <title>Muhammad Anas — Engineering Manager</title>
+    <meta
+      name="description"
+      content="Muhammad Anas — Engineering Manager with 10+ years building and leading multi-team engineering organizations and scalable, cloud-native platforms."
+    />
+    <meta name="author" content="Muhammad Anas" />
+    <link rel="canonical" href="https://anasabdani.dev" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://anasabdani.dev" />
+    <meta property="og:title" content="Muhammad Anas — Engineering Manager" />
+    <meta
+      property="og:description"
+      content="Engineering Manager with 10+ years leading multi-team engineering organizations and delivering scalable, cloud-native platforms."
+    />
+    <meta property="og:image" content="https://anasabdani.dev/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Muhammad Anas — Engineering Manager" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Muhammad Anas — Engineering Manager" />
+    <meta
+      name="twitter:description"
+      content="Engineering Manager with 10+ years leading multi-team engineering organizations and delivering scalable, cloud-native platforms."
+    />
+    <meta name="twitter:image" content="https://anasabdani.dev/og.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Muhammad Anas",
+        "alternateName": "Anas Abdani",
+        "jobTitle": "Engineering Manager",
+        "url": "https://anasabdani.dev",
+        "image": "https://anasabdani.dev/og.png",
+        "email": "mailto:anas_abdani@hotmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Karachi",
+          "addressCountry": "PK"
+        },
+        "worksFor": { "@type": "Organization", "name": "Flipdish" },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "NED University of Engineering & Technology"
+        },
+        "knowsAbout": [
+          "Engineering Management",
+          "Node.js",
+          "TypeScript",
+          "React",
+          "React Native",
+          "AWS",
+          "Serverless Architecture",
+          "Microservices",
+          "Agile Delivery"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/anas-abdani",
+          "https://github.com/Anas786"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
