@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence } from 'motion/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { ThemeModeProvider } from './context/ThemeModeContext';
 import { GlobalStyles } from './styles/GlobalStyles';
 import { SkipLink } from './styles/ui';
@@ -53,6 +54,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <SpeedInsights />
     </ThemeModeProvider>
   );
 }
