@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion, type Variants } from 'motion/react';
 import Reveal from './Reveal';
 import Parallax from './Parallax';
 import TiltCard from './TiltCard';
@@ -64,11 +65,30 @@ const IconBadge = styled.span`
   }
 `;
 
-const Tags = styled.div`
+const Tags = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 `;
+
+const PopChip = styled(motion(Chip))`
+  cursor: default;
+`;
+
+const tagsStagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.035, delayChildren: 0.1 } },
+};
+
+const chipPop: Variants = {
+  hidden: { opacity: 0, scale: 0.7, y: 10 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 380, damping: 24 },
+  },
+};
 
 export default function Skills() {
   return (
@@ -100,9 +120,20 @@ export default function Skills() {
                   </IconBadge>
                   {group.title}
                 </Heading>
-                <Tags>
+                <Tags
+                  variants={tagsStagger}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, margin: '-40px' }}
+                >
                   {group.items.map((item) => (
-                    <Chip key={item}>{item}</Chip>
+                    <PopChip
+                      key={item}
+                      variants={chipPop}
+                      whileHover={{ y: -3, scale: 1.06 }}
+                    >
+                      {item}
+                    </PopChip>
                   ))}
                 </Tags>
               </Card>

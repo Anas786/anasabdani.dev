@@ -130,8 +130,9 @@ export const Chip = styled.span`
 
   &:hover {
     color: ${({ theme }) => theme.colors.text};
-    border-color: ${({ theme }) => theme.colors.borderStrong};
-    background: ${({ theme }) => theme.colors.surface2};
+    border-color: ${({ theme }) => theme.colors.accent};
+    background: ${({ theme }) => theme.colors.accentSoft};
+    box-shadow: 0 6px 18px -8px rgba(59, 130, 246, 0.45);
   }
 `;
 

@@ -36,11 +36,36 @@ const Glow = styled.span`
   }
 `;
 
+/* Mouse-tracked 1px gradient ring — the radial gradient is masked down to the
+   border area only, so it traces the card edge near the cursor. */
+const BorderGlow = styled.span`
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 1px;
+  background: radial-gradient(
+    300px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(34, 211, 238, 0.8),
+    rgba(59, 130, 246, 0.4) 45%,
+    transparent 70%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+`;
+
 const TiltWrap = styled(motion.div)`
   position: relative;
   isolation: isolate;
   will-change: transform;
-  &:hover ${Glow} {
+  &:hover ${Glow}, &:hover ${BorderGlow} {
     opacity: 1;
   }
 `;
@@ -95,6 +120,7 @@ export default function TiltCard({ children, className, i = 0, max = 6 }: TiltCa
     >
       <Glow aria-hidden="true" />
       {children}
+      <BorderGlow aria-hidden="true" />
     </TiltWrap>
   );
 }

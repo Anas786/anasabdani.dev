@@ -1,5 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform, type Variants } from 'motion/react';
 import styled, { keyframes } from 'styled-components';
+import Magnetic from './Magnetic';
 import { ArrowRight, Download, MapPin, Sparkles, Layers, ChevronDown } from './icons';
 import { Button, Container, GradientText } from '../styles/ui';
 import { profile, experience } from '../data/content';
@@ -12,8 +13,23 @@ const container: Variants = {
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.21, 0.5, 0.27, 1] } },
+  hidden: { opacity: 0, y: 24, filter: 'blur(8px)' },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.6, ease: [0.21, 0.5, 0.27, 1] },
+  },
+};
+
+const word: Variants = {
+  hidden: { opacity: 0, y: '0.4em', filter: 'blur(12px)' },
+  show: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.7, delay: 0.25 + i * 0.14, ease: [0.21, 0.5, 0.27, 1] },
+  }),
 };
 
 const textShimmer = keyframes`
@@ -105,6 +121,17 @@ const Title = styled(motion.h1)`
   & ${GradientText} {
     background-size: 220% auto;
     animation: ${textShimmer} 7s linear infinite;
+  }
+`;
+
+const Word = styled(motion(GradientText))`
+  display: inline-block;
+  will-change: transform, filter;
+
+  /* Space between words only — a trailing margin would widen the line box
+     and force a premature wrap. */
+  & + & {
+    margin-left: 0.22em;
   }
 `;
 
@@ -400,19 +427,27 @@ export default function Hero() {
             </Badge>
 
             <Title variants={item}>
-              <GradientText>{profile.shortName}</GradientText>
+              {profile.shortName.split(' ').map((w, i) => (
+                <Word key={w} variants={reduce ? undefined : word} custom={i}>
+                  {w}
+                </Word>
+              ))}
               <Role>{profile.role} · 10+ years</Role>
             </Title>
 
             <Lead variants={item}>{profile.tagline}</Lead>
 
             <Actions variants={item}>
-              <Button href="#contact">
-                Get in touch <ArrowRight />
-              </Button>
-              <Button $variant="ghost" href={profile.resume} download>
-                <Download /> Download résumé
-              </Button>
+              <Magnetic>
+                <Button href="#contact">
+                  Get in touch <ArrowRight />
+                </Button>
+              </Magnetic>
+              <Magnetic>
+                <Button $variant="ghost" href={profile.resume} download>
+                  <Download /> Download résumé
+                </Button>
+              </Magnetic>
             </Actions>
 
             <Meta variants={item}>

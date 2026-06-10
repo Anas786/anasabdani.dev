@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import styled from 'styled-components';
 import Logo from './Logo';
+import Magnetic from './Magnetic';
 import ThemeToggle from './ThemeToggle';
 import { Download, Menu, X } from './icons';
 import { Button, Container } from '../styles/ui';
@@ -47,6 +48,8 @@ const Links = styled.ul`
   list-style: none;
 
   & a {
+    position: relative;
+    display: inline-block;
     padding: 9px 14px;
     font-size: 0.92rem;
     color: ${({ theme }) => theme.colors.textMuted};
@@ -57,10 +60,22 @@ const Links = styled.ul`
     color: ${({ theme }) => theme.colors.text};
     background: ${({ theme }) => theme.colors.surface};
   }
+  & a[aria-current='true'] {
+    color: ${({ theme }) => theme.colors.text};
+  }
 
   @media (max-width: 760px) {
     display: none;
   }
+`;
+
+const ActivePill = styled(motion.span)`
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 999px;
+  background: ${({ theme }) => theme.colors.surface2};
+  border: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
 const CTA = styled.div`
@@ -69,7 +84,7 @@ const CTA = styled.div`
   gap: 12px;
 
   @media (max-width: 760px) {
-    & > a.btn-primary {
+    & a.btn-primary {
       display: none;
     }
   }
@@ -136,12 +151,32 @@ const MobileMenu = styled(motion.div)`
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Scroll-spy: a thin band around the viewport's middle decides which
+  // section is "current" ('top' included so the pill clears on the hero).
+  useEffect(() => {
+    const ids = ['top', ...navLinks.map((l) => l.id)];
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActiveId(e.target.id);
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => obs.observe(s));
+    return () => obs.disconnect();
   }, []);
 
   useEffect(() => {
@@ -168,7 +203,15 @@ export default function Navbar() {
             <Links>
               {navLinks.map((l) => (
                 <li key={l.id}>
-                  <a href={`#${l.id}`}>{l.label}</a>
+                  <a href={`#${l.id}`} aria-current={l.id === activeId || undefined}>
+                    {l.id === activeId && (
+                      <ActivePill
+                        layoutId="nav-pill"
+                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    {l.label}
+                  </a>
                 </li>
               ))}
             </Links>
@@ -176,9 +219,11 @@ export default function Navbar() {
 
           <CTA>
             <ThemeToggle />
-            <Button className="btn-primary" href={profile.resume} download>
-              <Download /> Résumé
-            </Button>
+            <Magnetic strength={0.2}>
+              <Button className="btn-primary" href={profile.resume} download>
+                <Download /> Résumé
+              </Button>
+            </Magnetic>
             <HamburgerBtn
               type="button"
               onClick={() => setOpen((v) => !v)}

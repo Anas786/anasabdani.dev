@@ -1,4 +1,11 @@
-import { motion, useReducedMotion, type AnimationProps } from 'motion/react';
+import { useEffect } from 'react';
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  type AnimationProps,
+} from 'motion/react';
 import styled from 'styled-components';
 
 const Wrap = styled.div`
@@ -50,6 +57,48 @@ const Orb = styled(motion.div)<{ $variant: 'one' | 'two' | 'three' }>`
   `}
 `;
 
+const SPOT = 520;
+
+const CursorGlow = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: ${SPOT}px;
+  height: ${SPOT}px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.12),
+    rgba(34, 211, 238, 0.05) 45%,
+    transparent 68%
+  );
+
+  @media (pointer: coarse) {
+    display: none;
+  }
+`;
+
+/* A soft spotlight that lazily trails the cursor across the page. */
+function CursorSpot() {
+  const mx = useMotionValue(-SPOT);
+  const my = useMotionValue(-SPOT);
+  const spring = { stiffness: 55, damping: 16, mass: 0.5 };
+  const x = useSpring(mx, spring);
+  const y = useSpring(my, spring);
+
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      mx.set(e.clientX - SPOT / 2);
+      my.set(e.clientY - SPOT / 2);
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    return () => window.removeEventListener('pointermove', onMove);
+  }, [mx, my]);
+
+  return <CursorGlow style={{ x, y }} />;
+}
+
 export default function Background() {
   const reduce = useReducedMotion();
   const float = (x: number, y: number, dur: number): AnimationProps =>
@@ -66,6 +115,7 @@ export default function Background() {
       <Orb $variant="one" {...float(-40, 50, 16)} />
       <Orb $variant="two" {...float(50, -40, 20)} />
       <Orb $variant="three" {...float(-30, -30, 24)} />
+      {!reduce && <CursorSpot />}
     </Wrap>
   );
 }
