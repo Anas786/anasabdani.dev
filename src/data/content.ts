@@ -105,9 +105,7 @@ export const profile: Profile = {
   githubLabel: 'github.com/Anas786',
   resume: '/Anas-Abdani-Resume.pdf',
   domain: 'anasabdani.dev',
-  // TODO: replace with your real Calendly event URL once your account is set up.
-  // Format: https://calendly.com/<your-handle>/<event-slug>
-  calendly: 'https://calendly.com/anas-abdani/30min',
+  calendly: 'https://calendly.com/anas_abdani/30min',
 };
 
 export const stats: Stat[] = [
