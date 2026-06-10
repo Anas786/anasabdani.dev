@@ -16,6 +16,7 @@ import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Testimonials from './components/Testimonials';
 import Certifications from './components/Certifications';
+import WorkWithMe from './components/WorkWithMe';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -51,6 +52,7 @@ export default function App() {
         <Skills />
         <Testimonials />
         <Certifications />
+        <WorkWithMe />
         <Contact />
       </main>
       <Footer />

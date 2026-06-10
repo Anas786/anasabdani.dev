@@ -15,6 +15,9 @@ export interface Profile {
   githubLabel: string;
   resume: string;
   domain: string;
+  /** Full Calendly event URL (e.g. https://calendly.com/your-handle/30min).
+   *  Used by the WorkWithMe section's inline scheduler widget. */
+  calendly: string;
 }
 
 export interface Stat {
@@ -102,6 +105,9 @@ export const profile: Profile = {
   githubLabel: 'github.com/Anas786',
   resume: '/Anas-Abdani-Resume.pdf',
   domain: 'anasabdani.dev',
+  // TODO: replace with your real Calendly event URL once your account is set up.
+  // Format: https://calendly.com/<your-handle>/<event-slug>
+  calendly: 'https://calendly.com/anas-abdani/30min',
 };
 
 export const stats: Stat[] = [
@@ -295,7 +301,7 @@ export const certifications: Certification[] = [
     issuer: 'PMI',
     desc: 'Hands-on expertise in Agile methodologies including Scrum, Kanban, Lean, and adaptive delivery.',
     image: '/badges/pmi-acp.png',
-    url: 'https://www.credly.com/earner/earned/badge/1ff31a41-43cf-4a7a-908f-15df8a7af296',
+    url: 'https://www.credly.com/badges/1ff31a41-43cf-4a7a-908f-15df8a7af296',
   },
   {
     title: 'Value Stream Management',
@@ -469,5 +475,6 @@ export const navLinks: NavLink[] = [
   { id: 'skills', label: 'Skills' },
   { id: 'testimonials', label: 'Testimonials' },
   { id: 'certifications', label: 'Certifications' },
+  { id: 'work', label: 'Work with me' },
   { id: 'contact', label: 'Contact' },
 ];
