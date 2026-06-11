@@ -21,23 +21,34 @@
       })();
     </script>
 
+    <!-- The prerendered HTML includes the loading overlay (instant first
+         paint); without JS nothing dismisses it, so hide it for no-JS readers. -->
+    <noscript>
+      <style>
+        #app-loader {
+          display: none !important;
+        }
+      </style>
+    </noscript>
+
     <title>Muhammad Anas — Engineering Manager</title>
     <meta
       name="description"
       content="Muhammad Anas — Engineering Manager with 10+ years building and leading multi-team engineering organizations and scalable, cloud-native platforms."
     />
     <meta name="author" content="Muhammad Anas" />
-    <link rel="canonical" href="https://anasabdani.dev" />
+    <!-- Vercel 307-redirects the apex to www, so www is the canonical host. -->
+    <link rel="canonical" href="https://www.anasabdani.dev/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://anasabdani.dev" />
+    <meta property="og:url" content="https://www.anasabdani.dev/" />
     <meta property="og:title" content="Muhammad Anas — Engineering Manager" />
     <meta
       property="og:description"
       content="Engineering Manager with 10+ years leading multi-team engineering organizations and delivering scalable, cloud-native platforms."
     />
-    <meta property="og:image" content="https://anasabdani.dev/og.png" />
+    <meta property="og:image" content="https://www.anasabdani.dev/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Muhammad Anas — Engineering Manager" />
@@ -49,7 +60,7 @@
       name="twitter:description"
       content="Engineering Manager with 10+ years leading multi-team engineering organizations and delivering scalable, cloud-native platforms."
     />
-    <meta name="twitter:image" content="https://anasabdani.dev/og.png" />
+    <meta name="twitter:image" content="https://www.anasabdani.dev/og.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,42 +70,71 @@
       rel="stylesheet"
     />
 
-    <!-- Structured data -->
+    <!-- Structured data: ProfilePage is Google's documented format for
+         consolidating a person's identity into the Knowledge Graph. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Muhammad Anas",
-        "alternateName": "Anas Abdani",
-        "jobTitle": "Engineering Manager",
-        "url": "https://anasabdani.dev",
-        "image": "https://anasabdani.dev/og.png",
-        "email": "mailto:anas_abdani@hotmail.com",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Karachi",
-          "addressCountry": "PK"
-        },
-        "worksFor": { "@type": "Organization", "name": "Flipdish" },
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "NED University of Engineering & Technology"
-        },
-        "knowsAbout": [
-          "Engineering Management",
-          "Node.js",
-          "TypeScript",
-          "React",
-          "React Native",
-          "AWS",
-          "Serverless Architecture",
-          "Microservices",
-          "Agile Delivery"
-        ],
-        "sameAs": [
-          "https://www.linkedin.com/in/anas-abdani",
-          "https://github.com/Anas786"
-        ]
+        "@type": "ProfilePage",
+        "dateModified": "2026-06-12",
+        "mainEntity": {
+          "@type": "Person",
+          "@id": "https://www.anasabdani.dev/#person",
+          "name": "Muhammad Anas",
+          "alternateName": "Anas Abdani",
+          "jobTitle": "Engineering Manager",
+          "description": "Engineering Manager with 10+ years leading multi-team engineering organizations and shipping scalable, cloud-native platforms. Leads 3 Agile teams at Flipdish. Available for fractional engineering leadership and consulting engagements.",
+          "url": "https://www.anasabdani.dev/",
+          "image": "https://www.anasabdani.dev/anas.jpg",
+          "email": "mailto:anas_abdani@hotmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressCountry": "PK"
+          },
+          "worksFor": { "@type": "Organization", "name": "Flipdish", "url": "https://www.flipdish.com" },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "NED University of Engineering & Technology"
+          },
+          "hasCredential": [
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Project Management Professional (PMP)®",
+              "credentialCategory": "certification",
+              "recognizedBy": { "@type": "Organization", "name": "Project Management Institute" },
+              "url": "https://www.credly.com/badges/966ad4b3-bc0b-458d-a980-8bc7c3f08a87"
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "PMI Agile Certified Practitioner (PMI-ACP)®",
+              "credentialCategory": "certification",
+              "recognizedBy": { "@type": "Organization", "name": "Project Management Institute" },
+              "url": "https://www.credly.com/badges/1ff31a41-43cf-4a7a-908f-15df8a7af296"
+            }
+          ],
+          "knowsAbout": [
+            "Engineering Management",
+            "Engineering Leadership",
+            "Fractional CTO",
+            "AI-Assisted Software Delivery",
+            "Food-tech Platforms",
+            "Node.js",
+            "TypeScript",
+            "React",
+            "React Native",
+            "AWS",
+            "Serverless Architecture",
+            "Microservices",
+            "Incident Management",
+            "Agile Delivery"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/anas-abdani",
+            "https://github.com/Anas786",
+            "https://calendly.com/anas_abdani/30min"
+          ]
+        }
       }
     </script>
   </head>

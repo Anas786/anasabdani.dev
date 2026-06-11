@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { ThemeModeProvider } from './context/ThemeModeContext';
 import { GlobalStyles } from './styles/GlobalStyles';
 import { SkipLink } from './styles/ui';
 import Background from './components/Background';
+import Cursor from './components/Cursor';
 import Loader from './components/Loader';
 import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
@@ -40,6 +42,7 @@ export default function App() {
       <GlobalStyles />
       <AnimatePresence>{loading && <Loader key="loader" />}</AnimatePresence>
       <SkipLink href="#main">Skip to content</SkipLink>
+      <Cursor />
       <ScrollProgress />
       <Background />
       <Navbar />
@@ -56,6 +59,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <Analytics />
       <SpeedInsights />
     </ThemeModeProvider>
   );

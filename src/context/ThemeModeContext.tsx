@@ -17,15 +17,16 @@ interface ThemeModeContextValue {
 
 const ThemeModeContext = createContext<ThemeModeContextValue | null>(null);
 
-function readInitial(): ThemeMode {
-  if (typeof document === 'undefined') return 'dark';
-  const attr = document.documentElement.getAttribute('data-theme');
-  if (attr === 'light' || attr === 'dark') return attr;
-  return 'dark';
-}
-
 export function ThemeModeProvider({ children }: { children: ReactNode }) {
-  const [mode, setMode] = useState<ThemeMode>(readInitial);
+  // Two-pass theming: the server (and the first client render, so hydration
+  // matches) always renders dark; the stored preference applies in an effect.
+  // The flip happens behind the Loader overlay, so light users see no flash.
+  const [mode, setMode] = useState<ThemeMode>('dark');
+
+  useEffect(() => {
+    const attr = document.documentElement.getAttribute('data-theme');
+    if (attr === 'light') setMode('light');
+  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', mode);

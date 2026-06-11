@@ -1,4 +1,5 @@
-import { InlineWidget } from 'react-calendly';
+import { InlineWidget, useCalendlyEventListener } from 'react-calendly';
+import { track } from '@vercel/analytics';
 import styled from 'styled-components';
 import Reveal from './Reveal';
 import Parallax from './Parallax';
@@ -30,6 +31,13 @@ const WidgetWrap = styled.div`
 
 export default function WorkWithMe() {
   const { mode } = useThemeMode();
+
+  // The KPI for the whole site: a booked call. Calendly posts a message to
+  // the parent window when scheduling completes; surface it as an analytics
+  // conversion event.
+  useCalendlyEventListener({
+    onEventScheduled: () => track('calendly_booked'),
+  });
 
   // Calendly's inline widget reads these colors from query params it builds
   // off pageSettings. They must be raw hex strings (no `#`).

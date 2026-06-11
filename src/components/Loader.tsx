@@ -68,6 +68,9 @@ export default function Loader() {
 
   return (
     <Wrap
+      // The id pairs with a <noscript> rule in index.html that hides the
+      // prerendered overlay when JS never runs to dismiss it.
+      id="app-loader"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } }}
     >
