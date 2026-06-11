@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import type { ReactElement, SVGProps } from 'react';
 import Reveal from './Reveal';
 import Parallax from './Parallax';
 import TiltCard from './TiltCard';
-import { Sparkles, Code, Award, Layers, Utensils, Truck } from './icons';
+import { Sparkles, Code, Award, Layers, Utensils, Truck, ArrowRight } from './icons';
 import { Container, Section, Eyebrow, SectionTitle, SectionSub } from '../styles/ui';
 import { ai } from '../data/content';
 
@@ -64,6 +65,25 @@ const Card = styled(TiltCard)`
   }
 `;
 
+const CardLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.accent2};
+
+  & svg {
+    width: 15px;
+    height: 15px;
+    transition: transform 0.2s ease;
+  }
+  &:hover svg {
+    transform: translateX(3px);
+  }
+`;
+
 const IconBadge = styled.span`
   display: inline-grid;
   place-items: center;
@@ -109,6 +129,11 @@ export default function AI() {
                 </IconBadge>
                 <h3>{h.title}</h3>
                 <p>{h.desc}</p>
+                {h.title === 'AI-assisted delivery' && (
+                  <CardLink to="/case-studies/ai-assisted-onboarding">
+                    Read the full case study <ArrowRight />
+                  </CardLink>
+                )}
               </Card>
             );
           })}
