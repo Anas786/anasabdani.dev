@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion, useScroll, useSpring } from 'motion/react';
 import styled from 'styled-components';
 import Reveal from './Reveal';
 import Parallax from './Parallax';
@@ -138,11 +138,53 @@ const Dot = styled.button<{ $active: boolean }>`
 `;
 
 const Scroll = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
+  padding-left: 34px;
+`;
+
+const Track = styled.span`
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: ${({ theme }) => theme.colors.border};
+`;
+
+const TrackFill = styled(motion.div)`
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: ${({ theme }) => theme.colors.accentGrad};
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.45);
+  transform-origin: top;
+`;
+
+const TimelineDot = styled.span<{ $active: boolean }>`
+  /* -30px = -(34px pad) + 8px track left - 4px to center 10px dot on the 2px rail */
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: ${({ $active, theme }) => ($active ? theme.colors.accentGrad : theme.colors.borderStrong)};
+  box-shadow: ${({ $active, theme }) => ($active ? `0 0 0 4px ${theme.colors.accentSoft}` : '0 0 0 0 transparent')};
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+
+  @media (max-width: 900px) {
+    top: 17px;
+    transform: none;
+  }
 `;
 
 const Block = styled.article<{ $active: boolean }>`
+  position: relative;
   min-height: 46vh;
   display: flex;
   flex-direction: column;
@@ -250,6 +292,14 @@ export default function Experience() {
   const [active, setActive] = useState(initial);
   const blockRefs = useRef<(HTMLElement | null)[]>([]);
   const ratios = useRef<number[]>(experience.map(() => 0));
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ['start 0.75', 'end 0.55'],
+  });
+  const fillScale = useSpring(scrollYProgress, { stiffness: 90, damping: 22 });
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -335,7 +385,9 @@ export default function Experience() {
             </Dots>
           </Sticky>
 
-          <Scroll>
+          <Scroll ref={scrollRef}>
+            <Track aria-hidden="true" />
+            <TrackFill aria-hidden="true" style={{ scaleY: reduce ? 1 : fillScale }} />
             {experience.map((j, i) => (
               <Block
                 key={j.company}
@@ -345,6 +397,7 @@ export default function Experience() {
                   blockRefs.current[i] = el;
                 }}
               >
+                <TimelineDot $active={i === active} aria-hidden="true" />
                 <BlockHead>
                   <BlockLogo>
                     <img src={j.logo} alt={`${j.company} logo`} loading="lazy" />

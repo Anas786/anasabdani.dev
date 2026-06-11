@@ -7,6 +7,7 @@ import {
   type AnimationProps,
 } from 'motion/react';
 import styled from 'styled-components';
+import Particles from './Particles';
 
 const Wrap = styled.div`
   position: fixed;
@@ -112,6 +113,7 @@ export default function Background() {
   return (
     <Wrap aria-hidden="true">
       <Grid />
+      <Particles />
       <Orb $variant="one" {...float(-40, 50, 16)} />
       <Orb $variant="two" {...float(50, -40, 20)} />
       <Orb $variant="three" {...float(-30, -30, 24)} />

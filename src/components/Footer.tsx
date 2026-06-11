@@ -1,8 +1,16 @@
-import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 import Logo from './Logo';
-import { Mail, Linkedin, Github } from './icons';
+import Magnetic from './Magnetic';
+import { Mail, Linkedin, Github, ArrowUp } from './icons';
 import { Container } from '../styles/ui';
 import { profile } from '../data/content';
+
+const karachiTime = new Intl.DateTimeFormat('en-GB', {
+  timeZone: 'Asia/Karachi',
+  hour: '2-digit',
+  minute: '2-digit',
+});
 
 const FooterEl = styled.footer`
   border-top: 1px solid ${({ theme }) => theme.colors.border};
@@ -23,9 +31,57 @@ const Brand = styled.a`
   align-items: center;
 `;
 
+const MetaWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+`;
+
 const Meta = styled.p`
   color: ${({ theme }) => theme.colors.textFaint};
   font-size: 0.88rem;
+`;
+
+/* Transform/opacity only — an animated box-shadow would repaint every frame
+   for the lifetime of the page. */
+const pulse = keyframes`
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(2.6); opacity: 0; }
+`;
+
+const LocalTime = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: ${({ theme }) => theme.colors.textFaint};
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+`;
+
+const LiveDot = styled.span`
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid #22c55e;
+    animation: ${pulse} 2.4s ease-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      animation: none;
+      opacity: 0;
+    }
+  }
 `;
 
 const Socials = styled.div`
@@ -52,10 +108,27 @@ const Socials = styled.div`
     width: 19px;
     height: 19px;
   }
+  & a[href='#top'] svg {
+    transition: transform 0.2s ease;
+  }
+  & a[href='#top']:hover svg {
+    transform: translateY(-2px);
+  }
 `;
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  // Seeded client-side only — prerendered HTML would otherwise bake in the
+  // build-time clock and mismatch on hydration.
+  const [time, setTime] = useState<string | null>(null);
+
+  useEffect(() => {
+    const update = () => setTime(karachiTime.format(new Date()));
+    update();
+    const id = setInterval(update, 30_000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <FooterEl>
       <Inner>
@@ -63,9 +136,17 @@ export default function Footer() {
           <Logo size={18} animated={false} />
         </Brand>
 
-        <Meta>
-          © {year} Muhammad Anas · {profile.domain}
-        </Meta>
+        <MetaWrap>
+          {/* suppressHydrationWarning: the year is baked in at build time and
+              only diverges if a December build is browsed in January. */}
+          <Meta suppressHydrationWarning>
+            © {year} Muhammad Anas · {profile.domain}
+          </Meta>
+          <LocalTime>
+            <LiveDot aria-hidden="true" />
+            Karachi{time ? ` · ${time}` : ''}
+          </LocalTime>
+        </MetaWrap>
 
         <Socials>
           <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -77,6 +158,11 @@ export default function Footer() {
           <a href={`mailto:${profile.email}`} aria-label="Email">
             <Mail />
           </a>
+          <Magnetic strength={0.3}>
+            <a href="#top" aria-label="Back to top">
+              <ArrowUp />
+            </a>
+          </Magnetic>
         </Socials>
       </Inner>
     </FooterEl>

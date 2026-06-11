@@ -1,6 +1,16 @@
-import { motion, useReducedMotion, useScroll, useTransform, type Variants } from 'motion/react';
+import { useRef, type MouseEvent } from 'react';
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type Variants,
+} from 'motion/react';
 import styled, { keyframes } from 'styled-components';
 import Magnetic from './Magnetic';
+import RotatingText from './RotatingText';
 import { ArrowRight, Download, MapPin, Sparkles, Layers, ChevronDown } from './icons';
 import { Button, Container, GradientText } from '../styles/ui';
 import { profile, experience } from '../data/content';
@@ -124,7 +134,7 @@ const Title = styled(motion.h1)`
   }
 `;
 
-const Word = styled(motion(GradientText))`
+const Word = styled(motion.create(GradientText))`
   display: inline-block;
   will-change: transform, filter;
 
@@ -142,6 +152,9 @@ const Role = styled.span`
   color: ${({ theme }) => theme.colors.textMuted};
   margin-top: 14px;
   letter-spacing: -0.01em;
+  /* Title's 1.02 would clip descenders inside the overflow-hidden rotator;
+     a uniform line-height keeps rotator and static suffix top-aligned. */
+  line-height: 1.25;
 `;
 
 const Lead = styled(motion.p)`
@@ -274,6 +287,32 @@ const Frame = styled.div`
     );
     transform: translateX(-110%);
     animation: ${shineSweep} 7s ease-in-out infinite;
+  }
+`;
+
+const TiltWrap = styled(motion.div)`
+  will-change: transform;
+`;
+
+const Glare = styled.span`
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(255, 255, 255, 0.14),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  ${Portrait}:hover & {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
   }
 `;
 
@@ -412,6 +451,41 @@ export default function Hero() {
   const portraitY = useTransform(scrollY, [0, 700], [0, -70]);
   const contentY = useTransform(scrollY, [0, 700], [0, 40]);
 
+  const portraitRef = useRef<HTMLDivElement>(null);
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const springTiltX = useSpring(tiltX, { stiffness: 150, damping: 18 });
+  const springTiltY = useSpring(tiltY, { stiffness: 150, damping: 18 });
+
+  // Rect is cached on enter — reading it per mousemove while springs write
+  // transforms every frame forces synchronous layout. A null rect also gates
+  // out tap-emulated mouse events on touch devices, where no mouseleave
+  // would ever reset the tilt.
+  const portraitRect = useRef<DOMRect | null>(null);
+
+  const handlePortraitEnter = () => {
+    if (reduce || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    portraitRect.current = portraitRef.current?.getBoundingClientRect() ?? null;
+  };
+
+  const handlePortraitMove = (e: MouseEvent<HTMLDivElement>) => {
+    const el = portraitRef.current;
+    const rect = portraitRect.current;
+    if (!el || !rect) return;
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    tiltX.set((0.5 - py) * 14);
+    tiltY.set((px - 0.5) * 14);
+    el.style.setProperty('--gx', `${px * 100}%`);
+    el.style.setProperty('--gy', `${py * 100}%`);
+  };
+
+  const handlePortraitLeave = () => {
+    portraitRect.current = null;
+    tiltX.set(0);
+    tiltY.set(0);
+  };
+
   return (
     <Section id="top">
       <Container>
@@ -432,7 +506,12 @@ export default function Hero() {
                   {w}
                 </Word>
               ))}
-              <Role>{profile.role} · 10+ years</Role>
+              <Role>
+                <RotatingText
+                  words={[profile.role, 'Delivery Leader', 'Cloud-Native Architect', 'AI-Driven Builder']}
+                />{' '}
+                · 10+ years
+              </Role>
             </Title>
 
             <Lead variants={item}>{profile.tagline}</Lead>
@@ -464,28 +543,43 @@ export default function Hero() {
           </Left>
 
           <Portrait
+            ref={portraitRef}
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.21, 0.5, 0.27, 1], delay: 0.2 }}
             style={reduce ? undefined : { y: portraitY }}
+            onMouseEnter={handlePortraitEnter}
+            onMouseMove={handlePortraitMove}
+            onMouseLeave={handlePortraitLeave}
           >
             <PortraitGlow />
             <PortraitAurora aria-hidden="true" />
-            <Frame>
-              <picture>
-                <source srcSet="/anas.webp" type="image/webp" />
-                <img
-                  src="/anas.jpg"
-                  alt="Muhammad Anas, Engineering Manager"
-                  width={760}
-                  height={1014}
-                />
-              </picture>
-              <Spark $variant="s1" aria-hidden="true" />
-              <Spark $variant="s2" aria-hidden="true" />
-              <Spark $variant="s3" aria-hidden="true" />
-              <Spark $variant="s4" aria-hidden="true" />
-            </Frame>
+            {/* Tilt wraps Frame only — the glow, aurora and floating card are
+                absolutely-positioned siblings that must stay flat. */}
+            <TiltWrap
+              style={
+                reduce
+                  ? undefined
+                  : { rotateX: springTiltX, rotateY: springTiltY, transformPerspective: 900 }
+              }
+            >
+              <Frame>
+                <picture>
+                  <source srcSet="/anas.webp" type="image/webp" />
+                  <img
+                    src="/anas.jpg"
+                    alt="Muhammad Anas, Engineering Manager"
+                    width={760}
+                    height={1014}
+                  />
+                </picture>
+                {!reduce && <Glare aria-hidden="true" />}
+                <Spark $variant="s1" aria-hidden="true" />
+                <Spark $variant="s2" aria-hidden="true" />
+                <Spark $variant="s3" aria-hidden="true" />
+                <Spark $variant="s4" aria-hidden="true" />
+              </Frame>
+            </TiltWrap>
             <PortraitCard
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}

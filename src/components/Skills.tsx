@@ -3,10 +3,11 @@ import { motion, type Variants } from 'motion/react';
 import Reveal from './Reveal';
 import Parallax from './Parallax';
 import TiltCard from './TiltCard';
+import Marquee from './Marquee';
 import type { ReactElement, SVGProps } from 'react';
 import { Users, Code, Layout, Server, Cloud, Database, Layers, Activity, Sparkles } from './icons';
 import { Container, Section, Eyebrow, SectionTitle, SectionSub, Chip } from '../styles/ui';
-import { skillGroups } from '../data/content';
+import { skillGroups, ai } from '../data/content';
 
 const ICONS: Record<string, (p: SVGProps<SVGSVGElement>) => ReactElement> = {
   leadership: Users,
@@ -19,6 +20,20 @@ const ICONS: Record<string, (p: SVGProps<SVGSVGElement>) => ReactElement> = {
   observability: Activity,
   ai: Sparkles,
 };
+
+const MarqueeBand = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+`;
+
+const MarqueeChip = styled(Chip)`
+  white-space: nowrap;
+`;
+
+// All unique skill names across groups, for the ticker row.
+const allSkills = Array.from(new Set(skillGroups.flatMap((g) => g.items)));
 
 const Grid = styled.div`
   display: grid;
@@ -71,7 +86,7 @@ const Tags = styled(motion.div)`
   gap: 8px;
 `;
 
-const PopChip = styled(motion(Chip))`
+const PopChip = styled(motion.create(Chip))`
   cursor: default;
 `;
 
@@ -108,6 +123,21 @@ export default function Skills() {
             </SectionSub>
           </Reveal>
         </Parallax>
+
+        <Reveal>
+          <MarqueeBand>
+            <Marquee duration={50}>
+              {allSkills.map((item) => (
+                <MarqueeChip key={item}>{item}</MarqueeChip>
+              ))}
+            </Marquee>
+            <Marquee reverse duration={38}>
+              {ai.tools.map((tool) => (
+                <MarqueeChip key={tool}>{tool}</MarqueeChip>
+              ))}
+            </Marquee>
+          </MarqueeBand>
+        </Reveal>
 
         <Grid>
           {skillGroups.map((group, i) => {

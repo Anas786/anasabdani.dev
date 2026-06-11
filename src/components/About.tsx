@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Reveal from './Reveal';
+import ScrollText from './ScrollText';
 import { Check } from './icons';
 import { Container, Section, Eyebrow, SectionTitle } from '../styles/ui';
 import { about } from '../data/content';
@@ -82,7 +83,9 @@ export default function About() {
               <SectionTitle>{about.heading}</SectionTitle>
             </Reveal>
             <div style={{ marginTop: 28 }}>
-              {about.paragraphs.map((p, i) => (
+              {/* ScrollText renders the first <p>, so Copy's first-of-type styling still applies. */}
+              <ScrollText text={about.paragraphs[0]} />
+              {about.paragraphs.slice(1).map((p, i) => (
                 <Reveal as="p" key={i} i={i + 2}>
                   {p}
                 </Reveal>

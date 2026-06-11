@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState, type FocusEvent } from 'react';
 import styled from 'styled-components';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import Reveal from './Reveal';
 import Parallax from './Parallax';
 import TiltCard from './TiltCard';
-import { Linkedin, ArrowRight } from './icons';
+import { Linkedin, ArrowRight, ChevronLeft, ChevronRight } from './icons';
 import { Container, Section, Eyebrow, SectionTitle, SectionSub } from '../styles/ui';
 import { testimonials, profile, type Testimonial } from '../data/content';
 
@@ -20,7 +21,39 @@ const Person = styled.div`
   align-items: center;
   gap: 13px;
   margin-top: 20px;
+
+  /* When rendered as a profile link, light up on hover so it reads as
+     clickable: name shifts to accent, avatar gets a ring. */
+  &[href] {
+    border-radius: 12px;
+  }
+  &[href] b {
+    transition: color 0.2s ease;
+  }
+  &[href]:hover b {
+    color: ${({ theme }) => theme.colors.accent2};
+  }
+  &[href] > img:first-child,
+  &[href] > span:first-child {
+    transition: box-shadow 0.2s ease;
+  }
+  &[href]:hover > img:first-child,
+  &[href]:hover > span:first-child {
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.accent2};
+  }
 `;
+
+/* Renders a Person row as an external profile link when one exists. */
+const personLinkProps = (t: Testimonial) =>
+  t.linkedin
+    ? ({
+        as: 'a',
+        href: t.linkedin,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        'aria-label': `View ${t.name}’s LinkedIn profile`,
+      } as const)
+    : {};
 
 const AvatarSpan = styled.span<{ $tone: number }>`
   flex-shrink: 0;
@@ -163,6 +196,71 @@ const Badge = styled.span`
   border-radius: 999px;
 `;
 
+const QuoteArea = styled(motion.div)`
+  min-width: 0;
+`;
+
+const SlideMeta = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  @media (max-width: 860px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 22px;
+  }
+`;
+
+const Controls = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+`;
+
+const NavBtn = styled.button`
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: ${({ theme }) => theme.colors.text};
+  background: ${({ theme }) => theme.colors.surface};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.accent};
+    background: ${({ theme }) => theme.colors.surface2};
+  }
+
+  & svg {
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+const Dots = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const Dot = styled.button<{ $active: boolean }>`
+  width: ${({ $active }) => ($active ? '44px' : '28px')};
+  height: 5px;
+  border-radius: 999px;
+  background: ${({ $active, theme }) =>
+    $active ? theme.colors.accentGrad : theme.colors.borderStrong};
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, width 0.3s ease;
+`;
+
 const Grid = styled.div`
   columns: 3;
   column-gap: 18px;
@@ -279,6 +377,28 @@ function Avatar({
 export default function Testimonials() {
   const featured = testimonials.find((t) => t.featured);
   const rest = testimonials.filter((t) => !t.featured);
+  const slides = featured ? [featured, ...rest.slice(0, 2)] : [];
+  const gridItems = featured ? rest.slice(2) : rest;
+
+  const reduce = useReducedMotion();
+  const [index, setIndex] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const paused = hovered || focused;
+
+  useEffect(() => {
+    if (reduce || paused || slides.length < 2) return;
+    const id = window.setInterval(() => {
+      setIndex((i) => (i + 1) % slides.length);
+    }, 8000);
+    return () => window.clearInterval(id);
+    // `index` resets the timer on manual navigation so prev/next clicks
+    // can't collide with an imminent auto-advance tick.
+  }, [reduce, paused, slides.length, index]);
+
+  const go = (dir: number) => setIndex((i) => (i + dir + slides.length) % slides.length);
+
+  const active = slides[index];
 
   return (
     <Section id="testimonials">
@@ -298,39 +418,107 @@ export default function Testimonials() {
           </Reveal>
         </Parallax>
 
-        {featured && (
-          <Featured>
-            <div>
-              <QuoteMark />
-              <blockquote>{featured.quote}</blockquote>
-            </div>
+        {active && (
+          <Featured
+            role="group"
+            aria-roledescription="carousel"
+            aria-label="Featured recommendations"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            onFocus={() => setFocused(true)}
+            onBlur={(e: FocusEvent<HTMLDivElement>) => {
+              if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocused(false);
+            }}
+          >
+            <QuoteArea
+              layout
+              transition={{
+                layout: reduce
+                  ? { duration: 0 }
+                  : { type: 'spring', stiffness: 200, damping: 28 },
+              }}
+              /* APG carousel pattern: live region stays 'off' while
+                 auto-rotating so SRs aren't re-interrupted every cycle. */
+              aria-live={reduce || paused || slides.length < 2 ? 'polite' : 'off'}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={active.name}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: reduce ? 0 : 0.4, ease: [0.21, 0.5, 0.27, 1] }}
+                >
+                  <QuoteMark />
+                  <blockquote>{active.quote}</blockquote>
+                </motion.div>
+              </AnimatePresence>
+            </QuoteArea>
             <Side>
-              <Badge>Featured recommendation</Badge>
-              <Person>
-                <Avatar
-                  initials={featured.initials}
-                  image={featured.image}
-                  name={featured.name}
-                  i={0}
-                />
-                <Meta>
-                  <b>{featured.name}</b>
-                  <span>{featured.title}</span>
-                  <small>
-                    <Linkedin /> {featured.relation}
-                  </small>
-                </Meta>
-              </Person>
+              <AnimatePresence mode="wait" initial={false}>
+                <SlideMeta
+                  key={active.name}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: reduce ? 0 : 0.4, ease: [0.21, 0.5, 0.27, 1] }}
+                >
+                  <Badge>
+                    {active.featured ? 'Featured recommendation' : 'LinkedIn recommendation'}
+                  </Badge>
+                  <Person {...personLinkProps(active)}>
+                    <Avatar
+                      initials={active.initials}
+                      image={active.image}
+                      name={active.name}
+                      i={index}
+                    />
+                    <Meta>
+                      <b>{active.name}</b>
+                      <span>{active.title}</span>
+                      <small>
+                        <Linkedin /> {active.relation}
+                      </small>
+                    </Meta>
+                  </Person>
+                </SlideMeta>
+              </AnimatePresence>
+              {slides.length > 1 && (
+                <Controls>
+                  <NavBtn
+                    type="button"
+                    aria-label="Previous recommendation"
+                    onClick={() => go(-1)}
+                  >
+                    <ChevronLeft />
+                  </NavBtn>
+                  <NavBtn type="button" aria-label="Next recommendation" onClick={() => go(1)}>
+                    <ChevronRight />
+                  </NavBtn>
+                  <Dots>
+                    {slides.map((s, i) => (
+                      <Dot
+                        key={s.name}
+                        type="button"
+                        $active={i === index}
+                        aria-label={`Show recommendation ${i + 1}`}
+                        aria-current={i === index}
+                        onClick={() => setIndex(i)}
+                      />
+                    ))}
+                  </Dots>
+                </Controls>
+              )}
             </Side>
           </Featured>
         )}
 
         <Grid>
-          {rest.map((t: Testimonial, i: number) => (
+          {gridItems.map((t: Testimonial, i: number) => (
             <Card key={t.name} i={i} max={5}>
               <QuoteMark />
               <blockquote>{t.quote}</blockquote>
-              <Person>
+              <Person {...personLinkProps(t)}>
                 <Avatar initials={t.initials} image={t.image} name={t.name} i={i + 1} />
                 <Meta>
                   <b>{t.name}</b>

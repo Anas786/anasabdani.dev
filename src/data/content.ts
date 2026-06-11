@@ -62,6 +62,8 @@ export interface Testimonial {
   name: string;
   initials: string;
   image: string | null;
+  /** Public LinkedIn profile URL — the recommender's name links here. */
+  linkedin?: string;
   title: string;
   relation: string;
   quote: string;
@@ -352,7 +354,8 @@ export const testimonials: Testimonial[] = [
     featured: true,
     name: 'Qasim Salam',
     initials: 'QS',
-    image: null,
+    image: '/recommenders/qasim-salam.jpg',
+    linkedin: 'https://www.linkedin.com/in/qasimsalam',
     title: 'Co-Founder, Ember AI · CEO, Remotebase',
     relation: 'Managed Anas directly · 2026',
     quote:
@@ -361,7 +364,8 @@ export const testimonials: Testimonial[] = [
   {
     name: 'A Bin Omar',
     initials: 'AO',
-    image: null,
+    image: '/recommenders/a-bin-omar.jpg',
+    linkedin: 'https://www.linkedin.com/in/a-bin-omar-42330bb2',
     title: 'Co-founder & CPO at Gridware',
     relation: 'Managed Anas directly · 2026',
     quote:
@@ -370,7 +374,8 @@ export const testimonials: Testimonial[] = [
   {
     name: 'Hall Chen',
     initials: 'HC',
-    image: null,
+    image: '/recommenders/hall-chen.jpg',
+    linkedin: 'https://www.linkedin.com/in/hallchen',
     title: 'Building the grid of the future',
     relation: 'Managed Anas directly · 2025',
     quote:
@@ -379,7 +384,8 @@ export const testimonials: Testimonial[] = [
   {
     name: 'Muhammad Bilal',
     initials: 'MB',
-    image: null,
+    image: '/recommenders/muhammad-bilal.jpg',
+    linkedin: 'https://www.linkedin.com/in/muhammadbilalmusharraf',
     title: 'Fractional CTO for AI & SaaS Startups · CISSP, PMP®',
     relation: 'Worked with Anas at KNYSYS · 2018',
     quote:
@@ -388,7 +394,8 @@ export const testimonials: Testimonial[] = [
   {
     name: 'Shayan Saghir',
     initials: 'SS',
-    image: null,
+    image: '/recommenders/shayan-saghir.jpg',
+    linkedin: 'https://www.linkedin.com/in/shayan-saghir-500a3a115',
     title: 'Principal Software Engineer @ 10Pearls',
     relation: 'Worked with Anas · 2017',
     quote:
@@ -397,7 +404,8 @@ export const testimonials: Testimonial[] = [
   {
     name: 'Muhammad Aamir',
     initials: 'MA',
-    image: null,
+    image: '/recommenders/muhammad-aamir.jpg',
+    linkedin: 'https://www.linkedin.com/in/muhammadaamirawan',
     title: 'Engineering Manager · PMP®',
     relation: 'Worked with Anas · 2017',
     quote:
@@ -406,7 +414,8 @@ export const testimonials: Testimonial[] = [
   {
     name: 'Sharjeel Ali Shaukat',
     initials: 'SA',
-    image: null,
+    image: '/recommenders/sharjeel-ali-shaukat.jpg',
+    linkedin: 'https://www.linkedin.com/in/sharjeel-ali-shaukat-55518724',
     title: 'Engineering Manager · AI Engineer',
     relation: 'Worked with Anas · 2017',
     quote:

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import styled from 'styled-components';
 import Logo from './Logo';
 import Magnetic from './Magnetic';
@@ -150,15 +150,30 @@ const MobileMenu = styled(motion.div)`
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState('');
+  const lastY = useRef(0);
+  const reduceMotion = useReducedMotion();
 
+  // Auto-hide: tuck the bar away on deliberate downward scrolls past the
+  // hero, bring it back on any upward intent or near the top.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      const delta = y - lastY.current;
+      if (open || y <= 180 || delta < -6) {
+        setHidden(false);
+      } else if (delta > 6) {
+        setHidden(true);
+      }
+      lastY.current = y;
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [open]);
 
   // Scroll-spy: a thin band around the viewport's middle decides which
   // section is "current" ('top' included so the pill clears on the hero).
@@ -180,19 +195,24 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (open) setHidden(false);
     document.body.style.overflow = open ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
   }, [open]);
 
+  const navHidden = hidden && !open && !reduceMotion;
+
   return (
     <>
       <Header
         $scrolled={scrolled}
         initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        animate={{ y: navHidden ? '-105%' : 0, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+        /* Keyboard focus must never land in an off-screen header. */
+        onFocusCapture={() => setHidden(false)}
       >
         <Inner>
           <Brand href="#top" aria-label="Muhammad Anas — home">

@@ -1,7 +1,10 @@
 import type { ReactElement, SVGProps } from 'react';
-import styled from 'styled-components';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import styled, { css } from 'styled-components';
 import Reveal from './Reveal';
-import { Mail, Phone, Linkedin, Github, Download, ArrowRight } from './icons';
+import Magnetic from './Magnetic';
+import { Mail, Phone, Linkedin, Github, Download, ArrowRight, Copy, Check } from './icons';
 import { Container, Section, Eyebrow, Button, GradientText } from '../styles/ui';
 import { profile } from '../data/content';
 
@@ -73,6 +76,25 @@ const CTAs = styled.div`
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 24px;
+`;
+
+const CopyButton = styled(Button)<{ $copied: boolean }>`
+  ${({ $copied, theme }) =>
+    $copied &&
+    css`
+      &,
+      &:hover {
+        border-color: ${theme.colors.accent};
+        background: ${theme.colors.accentSoft};
+      }
+    `}
+`;
+
+/* svg sizing inherits from buttonBase's descendant selector. */
+const SwapLabel = styled(motion.span)`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 `;
 
 const MetaLine = styled.div`
@@ -166,6 +188,31 @@ const RowArrow = styled(ArrowRight)`
 `;
 
 export default function Contact() {
+  const reduce = useReducedMotion();
+  const [copied, setCopied] = useState(false);
+  const copyTimer = useRef<number | undefined>(undefined);
+
+  useEffect(() => () => window.clearTimeout(copyTimer.current), []);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      window.clearTimeout(copyTimer.current);
+      copyTimer.current = window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // Clipboard API unavailable (insecure context / old browser) — ignore.
+    }
+  };
+
+  const pop = reduce
+    ? { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } }
+    : {
+        initial: { opacity: 0, scale: 0.8 },
+        animate: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.8 },
+      };
+
   return (
     <Section id="contact">
       <Container>
@@ -180,12 +227,46 @@ export default function Contact() {
               architecture, and scaling teams? I’d love to connect.
             </p>
             <CTAs>
-              <Button href={`mailto:${profile.email}`}>
-                <Mail /> Email me
-              </Button>
-              <Button $variant="ghost" href={profile.resume} download>
-                <Download /> Résumé
-              </Button>
+              <Magnetic>
+                <Button href={`mailto:${profile.email}`}>
+                  <Mail /> Email me
+                </Button>
+              </Magnetic>
+              <Magnetic>
+                <Button $variant="ghost" href={profile.resume} download>
+                  <Download /> Résumé
+                </Button>
+              </Magnetic>
+              <Magnetic>
+                <CopyButton
+                  as="button"
+                  type="button"
+                  $variant="ghost"
+                  $copied={copied}
+                  onClick={copyEmail}
+                  aria-live="polite"
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    {copied ? (
+                      <SwapLabel
+                        key="copied"
+                        {...pop}
+                        transition={{ duration: 0.18, ease: [0.21, 0.5, 0.27, 1] }}
+                      >
+                        <Check /> Copied!
+                      </SwapLabel>
+                    ) : (
+                      <SwapLabel
+                        key="idle"
+                        {...pop}
+                        transition={{ duration: 0.18, ease: [0.21, 0.5, 0.27, 1] }}
+                      >
+                        <Copy /> Copy email
+                      </SwapLabel>
+                    )}
+                  </AnimatePresence>
+                </CopyButton>
+              </Magnetic>
             </CTAs>
             <MetaLine>
               <i /> Open to opportunities · {profile.location}
