@@ -18,7 +18,7 @@ import {
 import { profile } from '../data/content';
 
 const PAGE_TITLE =
-  'AI-Assisted Customer Onboarding Case Study — ~40% Faster Onboarding | Muhammad Anas';
+  'AI-Assisted Customer Onboarding Case Study — Faster Onboarding, Lower Churn | Muhammad Anas';
 
 const TopBar = styled.header`
   height: ${({ theme }) => theme.layout.navH};
@@ -279,8 +279,9 @@ export default function CaseStudyOnboarding() {
             </Reveal>
             <Reveal i={1}>
               <Title>
-                Cutting customer onboarding effort by{' '}
-                <GradientText>~40%</GradientText> with AI-assisted workflows
+                Cutting customer onboarding effort{' '}
+                <GradientText>dramatically</GradientText> with AI-assisted
+                workflows
               </Title>
             </Reveal>
             <Reveal i={2}>
@@ -303,8 +304,8 @@ export default function CaseStudyOnboarding() {
             <div style={{ marginTop: 'clamp(30px, 4vw, 46px)' }}>
               <StatGrid>
                 <StatCard i={0} max={5}>
-                  <b>~40%</b>
-                  <span>more efficient customer onboarding</span>
+                  <b>Faster</b>
+                  <span>customer onboarding, with far less manual effort</span>
                 </StatCard>
                 <StatCard i={1} max={5}>
                   <b>3</b>
@@ -413,9 +414,9 @@ export default function CaseStudyOnboarding() {
                 <Reveal as="li" i={0}>
                   <Check />
                   <span>
-                    <strong>~40% improvement in onboarding efficiency</strong> —
-                    new restaurants go live with markedly less manual effort per
-                    account.
+                    <strong>A major improvement in onboarding efficiency</strong>{' '}
+                    — new restaurants go live with markedly less manual effort
+                    per account.
                   </span>
                 </Reveal>
                 <Reveal as="li" i={1}>

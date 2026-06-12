@@ -20,9 +20,9 @@ const SITE = 'https://www.anasabdani.dev';
 const CASE_STUDY_LD = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Cutting customer onboarding effort by ~40% with AI-assisted workflows',
+  headline: 'Cutting customer onboarding effort dramatically with AI-assisted workflows',
   description:
-    'Case study: how AI-assisted onboarding and menu-creation workflows cut customer onboarding effort by ~40% and reduced early-stage churn at food-tech SaaS Flipdish.',
+    'Case study: how AI-assisted onboarding and menu-creation workflows significantly cut customer onboarding effort and reduced early-stage churn at food-tech SaaS Flipdish.',
   // Full ISO 8601 datetimes — GSC flags bare dates as invalid (non-critical).
   datePublished: '2026-06-12T18:00:00+05:00',
   dateModified: '2026-06-12T18:00:00+05:00',
@@ -39,9 +39,9 @@ const ROUTES = [
     path: '/case-studies/ai-assisted-onboarding',
     out: join('case-studies', 'ai-assisted-onboarding', 'index.html'),
     title:
-      'AI-Assisted Customer Onboarding Case Study — ~40% Faster Onboarding | Muhammad Anas',
+      'AI-Assisted Customer Onboarding Case Study — Faster Onboarding, Lower Churn | Muhammad Anas',
     description:
-      'How AI-assisted onboarding and menu-creation workflows cut customer onboarding effort by ~40% and reduced early-stage churn at food-tech SaaS Flipdish.',
+      'How AI-assisted onboarding and menu-creation workflows significantly cut customer onboarding effort and reduced early-stage churn at food-tech SaaS Flipdish.',
     canonical: `${SITE}/case-studies/ai-assisted-onboarding`,
     jsonLd: CASE_STUDY_LD,
   },

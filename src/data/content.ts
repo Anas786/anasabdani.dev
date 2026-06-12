@@ -143,7 +143,7 @@ export const experience: ExperienceItem[] = [
     logo: '/logos/flipdish.png',
     website: 'https://www.flipdish.com',
     points: [
-      'Improved customer onboarding efficiency by ~40% with AI-assisted onboarding and menu-creation workflows, reducing manual effort and early-stage client churn.',
+      'Significantly improved customer onboarding efficiency with AI-assisted onboarding and menu-creation workflows, reducing manual effort and early-stage client churn.',
       'Lead 3 Agile teams delivering multiple concurrent product initiatives.',
       'Own end-to-end delivery: sprint planning, backlog prioritization, and release execution.',
       'Report directly to C-level leadership, aligning engineering with business priorities.',
@@ -426,12 +426,12 @@ export const testimonials: Testimonial[] = [
 export const ai: AI = {
   heading: 'Engineering leadership in the age of AI',
   intro:
-    'I weave AI into how teams build and ship — from AI-assisted onboarding that cut manual effort by ~40%, to embedding LLM tools across the everyday engineering workflow.',
+    'I weave AI into how teams build and ship — from AI-assisted onboarding that dramatically cut manual effort, to embedding LLM tools across the everyday engineering workflow.',
   highlights: [
     {
       icon: 'sparkles',
       title: 'AI-assisted delivery',
-      desc: 'Led AI-assisted onboarding and menu-creation workflows at Flipdish — ~40% more efficient onboarding and lower early-stage client churn.',
+      desc: 'Led AI-assisted onboarding and menu-creation workflows at Flipdish — significantly more efficient onboarding and lower early-stage client churn.',
     },
     {
       icon: 'food',
