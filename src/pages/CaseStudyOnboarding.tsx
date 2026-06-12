@@ -295,7 +295,7 @@ export default function CaseStudyOnboarding() {
             <Reveal i={3}>
               <FactRow>
                 <Chip>Role: Engineering Manager</Chip>
-                <Chip>3 Agile teams</Chip>
+                <Chip>Multi-team initiative</Chip>
                 <Chip>AI / LLM workflows</Chip>
                 <Chip>Restaurant ordering platform</Chip>
               </FactRow>
@@ -308,8 +308,8 @@ export default function CaseStudyOnboarding() {
                   <span>customer onboarding, with far less manual effort</span>
                 </StatCard>
                 <StatCard i={1} max={5}>
-                  <b>3</b>
-                  <span>Agile teams delivering the initiative</span>
+                  <b>Multi-team</b>
+                  <span>initiative delivered across my Agile squads</span>
                 </StatCard>
                 <StatCard i={2} max={5}>
                   <b>Lower</b>
@@ -346,7 +346,7 @@ export default function CaseStudyOnboarding() {
               <Reveal as="div">
                 <h2>My role</h2>
                 <p>
-                  As Engineering Manager I lead three Agile teams at Flipdish,
+                  As Engineering Manager I lead multiple Agile teams at Flipdish,
                   reporting directly to C-level leadership. I owned this
                   initiative end-to-end: framing the problem with stakeholders,
                   shaping the architecture, planning and prioritizing delivery

@@ -121,7 +121,7 @@ export const about: About = {
   heading: 'Leading with delivery, architecture & people in balance',
   paragraphs: [
     'Over the last decade I’ve grown from a hands-on engineer into an Engineering Manager who owns the full delivery lifecycle — from sprint planning and backlog prioritization to architectural direction and production reliability.',
-    'I currently lead three Agile teams at Flipdish, reporting directly to C-level leadership and aligning engineering execution with business priorities. I care deeply about observability, incident response, and building systems that stay reliable as they scale.',
+    'I currently lead multiple Agile teams at Flipdish, reporting directly to C-level leadership and aligning engineering execution with business priorities. I care deeply about observability, incident response, and building systems that stay reliable as they scale.',
     'My toolkit spans Node.js, TypeScript, React & React Native, serverless and microservices on AWS, and modern CI/CD — but my real focus is creating the conditions where teams ship confidently and grow.',
   ],
   highlights: [
@@ -144,7 +144,7 @@ export const experience: ExperienceItem[] = [
     website: 'https://www.flipdish.com',
     points: [
       'Significantly improved customer onboarding efficiency with AI-assisted onboarding and menu-creation workflows, reducing manual effort and early-stage client churn.',
-      'Lead 3 Agile teams delivering multiple concurrent product initiatives.',
+      'Lead multiple Agile teams delivering concurrent product initiatives.',
       'Own end-to-end delivery: sprint planning, backlog prioritization, and release execution.',
       'Report directly to C-level leadership, aligning engineering with business priorities.',
       'Drive architectural decisions for scalability, reliability, security, and performance.',

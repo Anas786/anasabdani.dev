@@ -590,7 +590,7 @@ export default function Hero() {
               </PCIcon>
               <div>
                 <b>Engineering Manager</b>
-                <small>Leading 3 Agile teams @ Flipdish</small>
+                <small>Leading Agile teams @ Flipdish</small>
               </div>
             </PortraitCard>
           </Portrait>
