@@ -23,8 +23,9 @@ const CASE_STUDY_LD = {
   headline: 'Cutting customer onboarding effort by ~40% with AI-assisted workflows',
   description:
     'Case study: how AI-assisted onboarding and menu-creation workflows cut customer onboarding effort by ~40% and reduced early-stage churn at food-tech SaaS Flipdish.',
-  datePublished: '2026-06-12',
-  dateModified: '2026-06-12',
+  // Full ISO 8601 datetimes — GSC flags bare dates as invalid (non-critical).
+  datePublished: '2026-06-12T18:00:00+05:00',
+  dateModified: '2026-06-12T18:00:00+05:00',
   mainEntityOfPage: `${SITE}/case-studies/ai-assisted-onboarding`,
   author: { '@type': 'Person', '@id': `${SITE}/#person`, name: 'Muhammad Anas', url: `${SITE}/` },
   keywords:
@@ -55,8 +56,23 @@ if (!rootRe.test(template)) {
   throw new Error('prerender: could not find empty #root in dist/index.html');
 }
 
+/**
+ * Server rendering bakes in motion's pre-animation state — whole sections
+ * carry style="opacity:0;..." until JS runs. Text extractors don't care, but
+ * visibility-aware SEO parsers (e.g. Bing's analyzer) may discount hidden
+ * headings, and no-JS readers would see a blank page. Drop any inline style
+ * that pins an element at opacity:0; the client re-applies animation state
+ * on hydration. (`opacity:0.16` etc. must NOT match — boundary required.)
+ */
+function stripHiddenState(html) {
+  return html.replace(/ style="([^"]*)"/g, (attr, css) =>
+    /(?:^|;)opacity:0(?:;|$)/.test(css) ? '' : attr
+  );
+}
+
 for (const route of ROUTES) {
-  const { html, styleTags } = render(route.path);
+  const { html: rawHtml, styleTags } = render(route.path);
+  const html = stripHiddenState(rawHtml);
   let page = template;
 
   if (route.title) {
