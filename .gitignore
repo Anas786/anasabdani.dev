@@ -6,6 +6,7 @@ dist-ssr
 # so Vercel/CI installs the exact same versions.
 !package-lock.json
 *.local
+*.local.md
 .DS_Store
 .vite
 npm-debug.log*
