@@ -475,13 +475,13 @@ export const ai: AI = {
   ],
 };
 
+// Curated — every section stays on the page, but the nav only carries the
+// destinations visitors actually jump to (AI/Skills/Certifications are
+// scroll-discovery content). Keeps the bar to one line with the page links.
 export const navLinks: NavLink[] = [
   { id: 'about', label: 'About' },
-  { id: 'ai', label: 'AI' },
   { id: 'experience', label: 'Experience' },
-  { id: 'skills', label: 'Skills' },
   { id: 'testimonials', label: 'Testimonials' },
-  { id: 'certifications', label: 'Certifications' },
   { id: 'work', label: 'Work with me' },
   { id: 'contact', label: 'Contact' },
 ];

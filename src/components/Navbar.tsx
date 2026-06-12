@@ -53,6 +53,7 @@ const Links = styled.ul`
     display: inline-block;
     padding: 9px 14px;
     font-size: 0.92rem;
+    white-space: nowrap;
     color: ${({ theme }) => theme.colors.textMuted};
     border-radius: 999px;
     transition: color 0.2s ease, background 0.2s ease;
