@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import Logo from './Logo';
 import Magnetic from './Magnetic';
@@ -57,6 +58,22 @@ const LocalTime = styled.span`
   color: ${({ theme }) => theme.colors.textFaint};
   font-size: 0.88rem;
   font-variant-numeric: tabular-nums;
+`;
+
+const FootNav = styled.nav`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: ${({ theme }) => theme.colors.textFaint};
+
+  & a {
+    color: ${({ theme }) => theme.colors.textMuted};
+    transition: color 0.2s ease;
+  }
+  & a:hover {
+    color: ${({ theme }) => theme.colors.text};
+  }
 `;
 
 const LiveDot = styled.span`
@@ -146,6 +163,11 @@ export default function Footer() {
             <LiveDot aria-hidden="true" />
             Karachi{time ? ` · ${time}` : ''}
           </LocalTime>
+          <FootNav aria-label="Site pages">
+            <RouterLink to="/case-studies">Case studies</RouterLink>
+            <span aria-hidden="true">·</span>
+            <RouterLink to="/services">Services</RouterLink>
+          </FootNav>
         </MetaWrap>
 
         <Socials>

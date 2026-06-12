@@ -32,9 +32,82 @@ const CASE_STUDY_LD = {
     'AI-assisted onboarding, customer onboarding automation, menu digitization, food-tech SaaS, engineering leadership',
 };
 
+const RELIABILITY_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'From firefighting to foresight: an observability overhaul that dramatically cut production incidents',
+  description:
+    'Case study: how observability practices, SLO-driven alerting, and structured incident management dramatically reduced production incidents at Gridware.',
+  datePublished: '2026-06-12T18:00:00+05:00',
+  dateModified: '2026-06-12T18:00:00+05:00',
+  mainEntityOfPage: `${SITE}/case-studies/reliability-observability`,
+  author: { '@type': 'Person', '@id': `${SITE}/#person`, name: 'Muhammad Anas', url: `${SITE}/` },
+  keywords:
+    'observability, SRE, incident management, SLOs, production reliability, engineering leadership',
+};
+
+const SERVICES_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Fractional CTO & Engineering Leadership Consulting',
+  serviceType: [
+    'Fractional CTO',
+    'Engineering Leadership',
+    'AI-Assisted Delivery Consulting',
+    'Architecture & Reliability Advisory',
+  ],
+  description:
+    'Fractional engineering leadership, AI-assisted delivery consulting, and advisory for SaaS and food-tech product companies. Remote, with US/UK/EU overlap.',
+  provider: { '@type': 'Person', '@id': `${SITE}/#person`, name: 'Muhammad Anas', url: `${SITE}/` },
+  areaServed: 'Remote — US, UK, EU time-zone overlap',
+  url: `${SITE}/services`,
+};
+
+const CASE_INDEX_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Engineering Leadership Case Studies',
+  description:
+    'Case studies in delivery leadership, AI adoption, and production reliability by Muhammad Anas.',
+  url: `${SITE}/case-studies`,
+  hasPart: [
+    { '@type': 'Article', url: `${SITE}/case-studies/ai-assisted-onboarding` },
+    { '@type': 'Article', url: `${SITE}/case-studies/reliability-observability` },
+  ],
+};
+
 const ROUTES = [
   // The home route keeps the template's own title/meta/ProfilePage schema.
   { path: '/', out: 'index.html' },
+  {
+    path: '/services',
+    out: join('services', 'index.html'),
+    title:
+      'Fractional CTO & Engineering Leadership Consulting — SaaS / Food-tech | Muhammad Anas',
+    description:
+      'Fractional CTO, engineering leadership, and AI-assisted delivery consulting for SaaS and food-tech companies. Remote with US/UK/EU overlap. Book an intro call.',
+    canonical: `${SITE}/services`,
+    jsonLd: SERVICES_LD,
+  },
+  {
+    path: '/case-studies',
+    out: join('case-studies', 'index.html'),
+    title: 'Engineering Leadership Case Studies — Delivery, AI, Reliability | Muhammad Anas',
+    description:
+      'Real initiatives, real outcomes: case studies in AI-assisted delivery, customer onboarding automation, and production reliability from Muhammad Anas.',
+    canonical: `${SITE}/case-studies`,
+    jsonLd: CASE_INDEX_LD,
+  },
+  {
+    path: '/case-studies/reliability-observability',
+    out: join('case-studies', 'reliability-observability', 'index.html'),
+    title:
+      'Reliability & Observability Case Study — Dramatically Fewer Incidents | Muhammad Anas',
+    description:
+      'How observability practices, SLO-driven alerting, and structured incident management dramatically reduced production incidents at Gridware.',
+    canonical: `${SITE}/case-studies/reliability-observability`,
+    jsonLd: RELIABILITY_LD,
+  },
   {
     path: '/case-studies/ai-assisted-onboarding',
     out: join('case-studies', 'ai-assisted-onboarding', 'index.html'),

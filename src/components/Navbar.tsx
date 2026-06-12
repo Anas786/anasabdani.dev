@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import styled from 'styled-components';
 import Logo from './Logo';
@@ -64,7 +65,7 @@ const Links = styled.ul`
     color: ${({ theme }) => theme.colors.text};
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 1020px) {
     display: none;
   }
 `;
@@ -83,7 +84,7 @@ const CTA = styled.div`
   align-items: center;
   gap: 12px;
 
-  @media (max-width: 760px) {
+  @media (max-width: 1020px) {
     & a.btn-primary {
       display: none;
     }
@@ -102,7 +103,7 @@ const HamburgerBtn = styled.button`
   justify-content: center;
   cursor: pointer;
 
-  @media (max-width: 760px) {
+  @media (max-width: 1020px) {
     display: flex;
   }
 `;
@@ -143,7 +144,7 @@ const MobileMenu = styled(motion.div)`
     margin-top: 12px;
   }
 
-  @media (min-width: 761px) {
+  @media (min-width: 1021px) {
     display: none !important;
   }
 `;
@@ -234,6 +235,12 @@ export default function Navbar() {
                   </a>
                 </li>
               ))}
+              <li>
+                <RouterLink to="/case-studies">Case studies</RouterLink>
+              </li>
+              <li>
+                <RouterLink to="/services">Services</RouterLink>
+              </li>
             </Links>
           </nav>
 
@@ -272,6 +279,16 @@ export default function Navbar() {
                   </a>
                 </li>
               ))}
+              <li>
+                <RouterLink to="/case-studies" onClick={() => setOpen(false)}>
+                  Case studies
+                </RouterLink>
+              </li>
+              <li>
+                <RouterLink to="/services" onClick={() => setOpen(false)}>
+                  Services
+                </RouterLink>
+              </li>
             </ul>
             <Button
               className="btn-primary"

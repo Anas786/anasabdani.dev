@@ -59,7 +59,9 @@ function CountUp({ value, suffix }: { value: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: '-40px' });
   const reduce = useReducedMotion();
-  const [n, setN] = useState(0);
+  // Starts at the final value so prerendered HTML shows real numbers to
+  // crawlers; the count-up still plays from 0 once the card scrolls into view.
+  const [n, setN] = useState(value);
 
   useEffect(() => {
     if (!inView) return;

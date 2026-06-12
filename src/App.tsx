@@ -9,7 +9,10 @@ import Background from './components/Background';
 import Cursor from './components/Cursor';
 import ScrollProgress from './components/ScrollProgress';
 import Home from './pages/Home';
+import Services from './pages/Services';
+import CaseStudies from './pages/CaseStudies';
 import CaseStudyOnboarding from './pages/CaseStudyOnboarding';
+import CaseStudyReliability from './pages/CaseStudyReliability';
 
 /* Client-side navigations keep the previous scroll position by default;
    jump to the top (or to the target anchor) like a full page load would. */
@@ -38,7 +41,13 @@ export default function App() {
       <ScrollReset />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/case-studies/ai-assisted-onboarding" element={<CaseStudyOnboarding />} />
+        <Route
+          path="/case-studies/reliability-observability"
+          element={<CaseStudyReliability />}
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Analytics />
