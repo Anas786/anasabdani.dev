@@ -301,7 +301,7 @@ export const certifications: Certification[] = [
     issuer: 'PMI',
     desc: 'Hands-on expertise in Agile methodologies including Scrum, Kanban, Lean, and adaptive delivery.',
     image: '/badges/pmi-acp.png',
-    url: 'https://www.credly.com/badges/1ff31a41-43cf-4a7a-908f-15df8a7af296',
+    url: 'https://www.credly.com/badges/90d3ba5f-953f-4a46-9824-3b98478630c3/public_url',
   },
   {
     title: 'Value Stream Management',
