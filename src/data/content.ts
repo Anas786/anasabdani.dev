@@ -97,8 +97,8 @@ export const profile: Profile = {
   intro:
     'I lead engineering teams that turn ambitious product bets into reliable, production-grade systems — owning delivery, architecture, and the people who make it happen.',
   email: 'anas_abdani@hotmail.com',
-  phone: '+92 312-8411494',
-  phoneHref: '+923128411494',
+  phone: '+966 57 220 1977',
+  phoneHref: '+966572201977',
   linkedin: 'https://www.linkedin.com/in/anas-abdani',
   linkedinLabel: 'linkedin.com/in/anas-abdani',
   linkedinRecommendations:
