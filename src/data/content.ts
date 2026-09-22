@@ -32,14 +32,24 @@ export interface About {
   highlights: string[];
 }
 
+export interface ExperienceRole {
+  title: string;
+  period: string;
+}
+
 export interface ExperienceItem {
   company: string;
+  /** Headline (most recent) title at this company. */
   role: string;
+  /** Overall span at this company. */
   period: string;
   current?: boolean;
   note?: string;
+  /** Path under public/. When omitted, the timeline renders a monogram in place of a logo. */
   logo?: string;
   website?: string;
+  /** Title progression inside one company, newest first. Shown under the headline role. */
+  roles?: ExperienceRole[];
   points: string[];
 }
 
@@ -137,7 +147,7 @@ export const about: About = {
 export const experience: ExperienceItem[] = [
   {
     company: 'Flipdish',
-    role: 'Engineering Manager',
+    role: 'Software Engineering Manager',
     period: 'Apr 2025 — Present',
     current: true,
     logo: '/logos/flipdish.png',
@@ -152,9 +162,38 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
+    company: 'Devsy',
+    role: 'Fractional CTO',
+    period: 'Sep 2023 — Present',
+    current: true,
+    website: 'https://devsy.tech',
+    points: [
+      'Lead the vision and execution of AI-first products and intelligent agents built to solve real business problems.',
+      'Shape product architecture, platform strategy, and engineering culture from the ground up.',
+      'Stay hands-on, building autonomous agents, GenAI-powered workflows, and cloud-native platforms that scale with customers.',
+      'Build engineering teams around fast feedback loops and a culture of ownership and experimentation.',
+    ],
+  },
+  {
+    company: 'Remotebase',
+    role: 'Senior Software Engineering Manager',
+    period: 'Aug 2021 — May 2025',
+    website: 'https://remotebase.com',
+    roles: [
+      { title: 'Senior Software Engineering Manager', period: 'Jul 2023 — May 2025' },
+      { title: 'Software Engineering Manager', period: 'Aug 2022 — Aug 2023' },
+      { title: 'Senior Software Engineer', period: 'Aug 2021 — Sep 2022' },
+    ],
+    points: [
+      'Placed with US clients through Remotebase and promoted twice in under two years, from Senior Software Engineer to Senior Software Engineering Manager.',
+      'Embedded with Capbase, then Northwestern Mutual, then Gridware, moving from hands-on engineering into delivery and team leadership.',
+      'Worked remotely with US-based leadership and stakeholders across time zones.',
+    ],
+  },
+  {
     company: 'Gridware',
-    role: 'Engineering Manager',
-    period: 'Feb 2023 — Mar 2025',
+    role: 'Software Engineering Manager',
+    period: 'Jan 2024 — Apr 2025',
     note: 'via Remotebase',
     logo: '/logos/gridware.png',
     website: 'https://www.gridware.io',
@@ -169,8 +208,8 @@ export const experience: ExperienceItem[] = [
   },
   {
     company: 'Northwestern Mutual',
-    role: 'Technical Project Manager',
-    period: 'Jan 2022 — Feb 2023',
+    role: 'Technical Team Lead',
+    period: 'Aug 2022 — Dec 2023',
     note: 'via Remotebase',
     logo: '/logos/northwestern.svg',
     website: 'https://www.northwesternmutual.com',
@@ -184,8 +223,8 @@ export const experience: ExperienceItem[] = [
   },
   {
     company: 'Capbase',
-    role: 'Technical Team Lead',
-    period: 'Aug 2021 — Dec 2022',
+    role: 'Senior Software Engineer',
+    period: 'Aug 2021 — Aug 2022',
     note: 'via Remotebase',
     logo: '/logos/capbase.png',
     website: 'https://capbase.com',
@@ -197,29 +236,46 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
-    company: 'Techlogix',
+    company: 'TLX Mobility',
     role: 'Senior Software Engineer',
-    period: 'Oct 2017 — Jul 2021',
+    period: 'Oct 2017 — Aug 2021',
+    note: 'a Techlogix company',
     logo: '/logos/techlogix.png',
     website: 'https://www.techlogix.com',
+    roles: [
+      { title: 'Senior Software Engineer', period: 'Apr 2020 — Aug 2021' },
+      { title: 'Software Engineer', period: 'Oct 2017 — Apr 2020' },
+    ],
     points: [
       'Developed serverless applications using Azure Functions and microservices-based APIs.',
-      'Built frontend applications using Angular and AngularJS with cross-browser support.',
+      'Built frontend applications using Angular and AngularJS for FMCG and payments products, with cross-browser support.',
       'Delivered cloud-based backend systems for Nokia Pakistan & Middle East.',
+      'Worked with major clients such as Nestlé and Unilever on their digital offerings.',
       'Resolved security issues identified through penetration testing and audits.',
       'Conducted unit and field testing, fixing performance issues and memory leaks.',
     ],
   },
   {
     company: 'KNYSYS',
-    role: 'Software Engineer',
-    period: 'Apr 2016 — Sep 2017',
+    role: 'Junior Software Developer',
+    period: 'Aug 2016 — Oct 2017',
     logo: '/logos/knysys.png',
     website: 'https://www.knysys.com',
     points: [
-      'Worked in a dual role across Android and backend development.',
-      'Delivered end-to-end features across the full software lifecycle.',
-      'Collaborated with cross-functional teams on multiple client projects.',
+      'Built Android and web applications, working extensively with YouTube and Google Maps APIs.',
+      'Developed RESTful APIs using web2py and Django to improve data access and management.',
+      'Built browser extensions for real-time user monitoring.',
+      'Collaborated with cross-functional teams across multiple client projects.',
+    ],
+  },
+  {
+    company: 'Meezan Bank Limited',
+    role: 'Android Developer Intern',
+    period: 'Jun 2016 — Jul 2016',
+    website: 'https://www.meezanbank.com',
+    points: [
+      'Built an Android app on the YouTube and Google Maps APIs.',
+      'Contributed to the bank’s Shariah compliance app, helping it meet regulatory standards.',
     ],
   },
 ];

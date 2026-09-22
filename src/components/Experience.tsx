@@ -101,6 +101,54 @@ const Note = styled.span`
   font-size: 0.85rem;
 `;
 
+/* Stands in for a logo when an entry has no image. The logo boxes are always
+   white, so the mark is fixed dark regardless of theme. */
+const Monogram = styled.span<{ $size: 'lg' | 'sm' }>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ${({ theme }) => theme.font.display};
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #0f172a;
+  font-size: ${({ $size }) => ($size === 'lg' ? '1.35rem' : '0.95rem')};
+`;
+
+/* Title progression inside one company (promotions), newest first. */
+const Roles = styled.ul<{ $compact?: boolean }>`
+  list-style: none;
+  margin-top: ${({ $compact }) => ($compact ? '8px' : '18px')};
+  display: grid;
+  gap: ${({ $compact }) => ($compact ? '4px' : '7px')};
+
+  & li {
+    position: relative;
+    padding-left: 16px;
+    font-size: ${({ $compact }) => ($compact ? '0.82rem' : '0.9rem')};
+    font-weight: 500;
+    line-height: 1.4;
+    color: ${({ theme }) => theme.colors.textMuted};
+  }
+  & li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.colors.borderStrong};
+  }
+  & li:first-child::before {
+    background: ${({ theme }) => theme.colors.accentGrad};
+  }
+  & li span {
+    color: ${({ theme }) => theme.colors.textFaint};
+    font-weight: 400;
+  }
+`;
+
 const Link = styled.a`
   display: inline-flex;
   align-items: center;
@@ -209,7 +257,7 @@ const Block = styled.article<{ $active: boolean }>`
 
 const BlockHead = styled.div`
   display: none;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
   margin-bottom: 18px;
 
@@ -220,6 +268,7 @@ const BlockHead = styled.div`
 
 const BlockLogo = styled.span`
   flex-shrink: 0;
+  margin-top: 2px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -286,6 +335,17 @@ const Points = styled.ul`
     transform: rotate(45deg);
   }
 `;
+
+/** "Meezan Bank Limited" -> "MB", "Devsy" -> "D". */
+const monogram = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter((w) => /^[A-Za-z]/.test(w))
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join('');
+
+const itemKey = (e: { company: string; period: string }) => `${e.company}-${e.period}`;
 
 export default function Experience() {
   const initial = Math.max(0, experience.findIndex((e) => e.current));
@@ -354,7 +414,13 @@ export default function Experience() {
               transition={{ duration: 0.35, ease: [0.21, 0.5, 0.27, 1] }}
             >
               <ActiveLogo>
-                <img src={job.logo} alt={`${job.company} logo`} />
+                {job.logo ? (
+                  <img src={job.logo} alt={`${job.company} logo`} />
+                ) : (
+                  <Monogram $size="lg" role="img" aria-label={`${job.company} logo`}>
+                    {monogram(job.company)}
+                  </Monogram>
+                )}
               </ActiveLogo>
               <Period>{job.period}</Period>
               <RoleTitle>
@@ -365,6 +431,15 @@ export default function Experience() {
                 {job.company}
                 {job.note && <Note> · {job.note}</Note>}
               </CompanyText>
+              {job.roles && (
+                <Roles aria-label={`Roles held at ${job.company}`}>
+                  {job.roles.map((r) => (
+                    <li key={r.title + r.period}>
+                      {r.title} <span>· {r.period}</span>
+                    </li>
+                  ))}
+                </Roles>
+              )}
               {job.website && (
                 <Link href={job.website} target="_blank" rel="noopener noreferrer">
                   Visit {job.company} <ExternalLink />
@@ -375,7 +450,7 @@ export default function Experience() {
             <Dots role="tablist" aria-label="Roles">
               {experience.map((e, i) => (
                 <Dot
-                  key={e.company}
+                  key={itemKey(e)}
                   $active={i === active}
                   onClick={() => goTo(i)}
                   aria-label={`${e.role} at ${e.company}`}
@@ -390,7 +465,7 @@ export default function Experience() {
             <TrackFill aria-hidden="true" style={{ scaleY: reduce ? 1 : fillScale }} />
             {experience.map((j, i) => (
               <Block
-                key={j.company}
+                key={itemKey(j)}
                 $active={i === active}
                 data-i={i}
                 ref={(el) => {
@@ -400,7 +475,13 @@ export default function Experience() {
                 <TimelineDot $active={i === active} aria-hidden="true" />
                 <BlockHead>
                   <BlockLogo>
-                    <img src={j.logo} alt={`${j.company} logo`} loading="lazy" />
+                    {j.logo ? (
+                      <img src={j.logo} alt={`${j.company} logo`} loading="lazy" />
+                    ) : (
+                      <Monogram $size="sm" role="img" aria-label={`${j.company} logo`}>
+                        {monogram(j.company)}
+                      </Monogram>
+                    )}
                   </BlockLogo>
                   <div>
                     <BlockRole>
@@ -412,6 +493,15 @@ export default function Experience() {
                       {j.note && <Note> · {j.note}</Note>}
                     </BlockCompany>
                     <BlockPeriod>{j.period}</BlockPeriod>
+                    {j.roles && (
+                      <Roles $compact aria-label={`Roles held at ${j.company}`}>
+                        {j.roles.map((r) => (
+                          <li key={r.title + r.period}>
+                            {r.title} <span>· {r.period}</span>
+                          </li>
+                        ))}
+                      </Roles>
+                    )}
                   </div>
                 </BlockHead>
                 <Points>
