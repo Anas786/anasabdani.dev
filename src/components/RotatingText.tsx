@@ -22,19 +22,16 @@ const WordEl = styled(motion.span)`
   white-space: nowrap;
 `;
 
+/* The widest word sizes the slot via a pseudo-element so it never becomes DOM
+   text: crawlers and text extractors would otherwise read it inside the H1. */
 const Sizer = styled.span`
   visibility: hidden;
   white-space: nowrap;
   pointer-events: none;
-`;
 
-const SrOnly = styled.span`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
+  &::after {
+    content: attr(data-word);
+  }
 `;
 
 interface RotatingTextProps {
@@ -70,25 +67,23 @@ export default function RotatingText({ words, interval = 2600, className }: Rota
 
   const widest = words.reduce((a, b) => (b.length > a.length ? b : a), '');
 
-  // AT reads a stable name (the first word); the rotation is visual-only so
-  // a heading containing this never re-announces every cycle.
+  // Only the current word is real text, so the server-rendered heading (what
+  // crawlers and answer engines read) contains the first word exactly once.
+  // A heading is not a live region, so the rotation does not re-announce.
   return (
-    <>
-      <SrOnly>{words[0]}</SrOnly>
-      <Wrap className={className} aria-hidden="true">
-        <Sizer>{widest}</Sizer>
-        <AnimatePresence mode="popLayout" initial={false}>
-          <WordEl
-            key={words[index]}
-            initial={{ y: '105%', opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: '-105%', opacity: 0 }}
-            transition={{ duration: 0.45, ease: [0.21, 0.5, 0.27, 1] }}
-          >
-            {words[index]}
-          </WordEl>
-        </AnimatePresence>
-      </Wrap>
-    </>
+    <Wrap className={className}>
+      <Sizer data-word={widest} aria-hidden="true" />
+      <AnimatePresence mode="popLayout" initial={false}>
+        <WordEl
+          key={words[index]}
+          initial={{ y: '105%', opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: '-105%', opacity: 0 }}
+          transition={{ duration: 0.45, ease: [0.21, 0.5, 0.27, 1] }}
+        >
+          {words[index]}
+        </WordEl>
+      </AnimatePresence>
+    </Wrap>
   );
 }

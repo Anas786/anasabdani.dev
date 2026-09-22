@@ -220,11 +220,12 @@ export default function Contact() {
           <Intro>
             <Eyebrow>Get in touch</Eyebrow>
             <h2>
-              Let’s build something <GradientText>reliable</GradientText>.
+              Let’s talk <GradientText>engineering leadership</GradientText>.
             </h2>
             <p>
-              Hiring for an engineering leadership role, or want to talk delivery,
-              architecture, and scaling teams? I’d love to connect.
+              I work remotely with teams in US, UK, and EU time zones. If you’re hiring for
+              an engineering leadership role, looking for a fractional CTO, or want to talk
+              through delivery, architecture, or scaling a team, email me or book a call.
             </p>
             <CTAs>
               <Magnetic>
@@ -253,7 +254,7 @@ export default function Contact() {
                         {...pop}
                         transition={{ duration: 0.18, ease: [0.21, 0.5, 0.27, 1] }}
                       >
-                        <Check /> Copied!
+                        <Check /> Copied
                       </SwapLabel>
                     ) : (
                       <SwapLabel

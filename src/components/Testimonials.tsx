@@ -408,12 +408,13 @@ export default function Testimonials() {
             <Eyebrow>Testimonials</Eyebrow>
           </Reveal>
           <Reveal i={1}>
-            <SectionTitle>What colleagues say</SectionTitle>
+            <SectionTitle>What colleagues say about working with me</SectionTitle>
           </Reveal>
           <Reveal i={2}>
             <SectionSub>
-              Recommendations from the leaders, peers, and teams I’ve worked alongside —
-              straight from LinkedIn.
+              These are LinkedIn recommendations from leaders, peers, and engineers I’ve
+              worked with over the last decade, as an engineer, team lead, and Engineering
+              Manager. The wording is theirs.
             </SectionSub>
           </Reveal>
         </Parallax>

@@ -17,8 +17,7 @@ import {
 } from '../styles/ui';
 import { profile } from '../data/content';
 
-const PAGE_TITLE =
-  'AI-Assisted Customer Onboarding Case Study — Faster Onboarding, Lower Churn | Muhammad Anas';
+const PAGE_TITLE = 'AI-Assisted Customer Onboarding Case Study | Muhammad Anas';
 
 const TopBar = styled.header`
   height: ${({ theme }) => theme.layout.navH};
@@ -262,7 +261,7 @@ export default function CaseStudyOnboarding() {
     <>
       <TopBar>
         <TopBarInner>
-          <Link to="/" aria-label="Muhammad Anas — home">
+          <Link to="/" aria-label="Muhammad Anas, home page">
             <Logo size={20} animated={false} />
           </Link>
           <BackLink to="/">
@@ -279,16 +278,18 @@ export default function CaseStudyOnboarding() {
             </Reveal>
             <Reveal i={1}>
               <Title>
-                Cutting customer onboarding effort{' '}
-                <GradientText>dramatically</GradientText> with AI-assisted
-                workflows
+                AI-assisted customer onboarding at Flipdish: cutting manual
+                effort <GradientText>dramatically</GradientText> for a
+                food-tech SaaS
               </Title>
             </Reveal>
             <Reveal i={2}>
               <Lede>
-                How my teams at Flipdish rebuilt customer onboarding around
-                AI-assisted menu creation — reducing manual effort, shortening
-                time-to-live for new restaurants, and lowering early-stage
+                I&rsquo;m Muhammad Anas, Engineering Manager at Flipdish, a
+                restaurant ordering and management SaaS platform. This case
+                study covers how my teams rebuilt customer onboarding around
+                AI-assisted menu creation. It reduced manual effort, shortened
+                time-to-live for new restaurants, and lowered early-stage
                 client churn.
               </Lede>
             </Reveal>
@@ -317,7 +318,7 @@ export default function CaseStudyOnboarding() {
                 </StatCard>
                 <StatCard i={3} max={5}>
                   <b>C-level</b>
-                  <span>visibility — outcomes reported to leadership</span>
+                  <span>visibility, with outcomes reported to leadership</span>
                 </StatCard>
               </StatGrid>
             </div>
@@ -328,30 +329,31 @@ export default function CaseStudyOnboarding() {
                 <p>
                   Flipdish provides online ordering, kiosks, and restaurant
                   management software to thousands of restaurants. Before a new
-                  customer can take a single order, their entire menu —
-                  categories, items, descriptions, options, modifiers, pricing —
-                  has to exist accurately in the platform.
+                  customer can take a single order, their entire menu has to
+                  exist accurately in the platform: categories, items,
+                  descriptions, options, modifiers, and pricing.
                 </p>
                 <p>
                   That setup work was largely manual. Menus arrive as PDFs,
                   spreadsheets, photos, and links in every imaginable format,
-                  and turning them into structured platform data was slow,
-                  repetitive, and error-prone. The cost wasn&rsquo;t just
-                  internal effort: <strong>every day a restaurant waits to go
-                  live is a day it questions its decision to sign</strong> —
-                  and slow onboarding showed up directly in early-stage churn.
+                  and turning them into structured platform data was slow and
+                  error-prone. The cost wasn&rsquo;t only internal effort.{' '}
+                  <strong>Every day a restaurant waits to go live is a day it
+                  questions its decision to sign</strong>, and slow onboarding
+                  showed up directly in early-stage churn.
                 </p>
               </Reveal>
 
               <Reveal as="div">
                 <h2>My role</h2>
                 <p>
-                  As Engineering Manager I lead multiple Agile teams at Flipdish,
-                  reporting directly to C-level leadership. I owned this
-                  initiative end-to-end: framing the problem with stakeholders,
-                  shaping the architecture, planning and prioritizing delivery
-                  across sprints, and reporting outcomes against business
-                  metrics — not shipped features.
+                  I&rsquo;m the Engineering Manager for multiple Agile teams at
+                  Flipdish, and I report directly to C-level leadership. I
+                  owned this initiative end-to-end: framing the problem with
+                  stakeholders, shaping the architecture, planning and
+                  prioritizing delivery across sprints, and reporting progress
+                  to leadership in terms of onboarding effort and churn instead
+                  of a list of shipped features.
                 </p>
               </Reveal>
 
@@ -364,9 +366,9 @@ export default function CaseStudyOnboarding() {
                     <b>Map the bottleneck before touching AI</b>
                     <span>
                       We traced the onboarding funnel step by step to find where
-                      the hours actually went. Menu creation dominated — making
-                      it the highest-leverage target rather than the flashiest
-                      one.
+                      the hours actually went. Menu creation dominated, which
+                      made it the target with the biggest payoff even though
+                      it wasn&rsquo;t the flashiest one.
                     </span>
                   </div>
                 </Step>
@@ -375,31 +377,31 @@ export default function CaseStudyOnboarding() {
                     <b>Build AI-assisted menu creation</b>
                     <span>
                       We introduced LLM-powered workflows that take the menus
-                      customers actually send — documents, images, links — and
-                      draft structured menu data automatically: categories,
-                      items, modifiers, and pricing ready for review instead of
-                      manual entry from scratch.
+                      customers actually send (documents, images, links) and
+                      draft structured menu data automatically. Categories,
+                      items, modifiers, and pricing come out ready for review,
+                      so nobody has to type them in from scratch.
                     </span>
                   </div>
                 </Step>
                 <Step i={2}>
                   <div>
-                    <b>Keep humans on the quality gate</b>
+                    <b>Keep people on the quality gate</b>
                     <span>
                       AI drafts, people approve. Onboarding staff review and
                       correct the generated menus, so accuracy stays high while
-                      the repetitive transcription work disappears — and their
-                      corrections show us exactly where to improve the
+                      the repetitive transcription work disappears. Their
+                      corrections also show us exactly where to improve the
                       workflows next.
                     </span>
                   </div>
                 </Step>
                 <Step i={3}>
                   <div>
-                    <b>Ship iteratively, measure relentlessly</b>
+                    <b>Ship sprint by sprint and measure against the baseline</b>
                     <span>
-                      We rolled the workflows into real onboarding pipelines
-                      sprint by sprint, measuring onboarding effort and
+                      We rolled the workflows into real onboarding pipelines one
+                      sprint at a time, measuring onboarding effort and
                       time-to-live against the manual baseline and reporting
                       the deltas to leadership.
                     </span>
@@ -414,15 +416,15 @@ export default function CaseStudyOnboarding() {
                 <Reveal as="li" i={0}>
                   <Check />
                   <span>
-                    <strong>A major improvement in onboarding efficiency</strong>{' '}
-                    — new restaurants go live with markedly less manual effort
+                    <strong>A major improvement in onboarding efficiency.</strong>{' '}
+                    New restaurants go live with markedly less manual effort
                     per account.
                   </span>
                 </Reveal>
                 <Reveal as="li" i={1}>
                   <Check />
                   <span>
-                    <strong>Lower early-stage client churn</strong> — faster
+                    <strong>Lower early-stage client churn.</strong> Faster
                     time-to-first-order keeps new customers engaged through the
                     riskiest phase of the relationship.
                   </span>
@@ -430,8 +432,8 @@ export default function CaseStudyOnboarding() {
                 <Reveal as="li" i={2}>
                   <Check />
                   <span>
-                    <strong>Onboarding capacity scales without headcount</strong>{' '}
-                    — the same team handles more new customers, and the work
+                    <strong>Onboarding capacity scales without adding headcount.</strong>{' '}
+                    The same team handles more new customers, and the work
                     shifted from data entry to quality review.
                   </span>
                 </Reveal>
@@ -440,22 +442,21 @@ export default function CaseStudyOnboarding() {
               <Reveal as="div">
                 <h2>What made it work</h2>
                 <p>
-                  <strong>Business metric first, technology second.</strong> The
-                  goal was never &ldquo;add AI&rdquo; — it was cutting
-                  onboarding effort and churn. Framing it that way kept
-                  leadership aligned and gave the teams a clear definition of
-                  done.
+                  <strong>Start from the business metric.</strong> We set out
+                  to cut onboarding effort and churn, and AI turned out to be
+                  the fastest way there. Framing it that way kept leadership
+                  aligned and gave the teams a clear definition of done.
                 </p>
                 <p>
-                  <strong>Human-in-the-loop is a feature, not a compromise.</strong>{' '}
-                  Keeping people on the approval step made the system
-                  trustworthy enough to put in front of real customer data on
-                  day one, and their corrections became the improvement loop.
+                  <strong>Keep a person on the approval step.</strong> That is
+                  what made the system trustworthy enough to put in front of
+                  real customer data on day one, and the reviewers&rsquo;
+                  corrections became the improvement loop.
                 </p>
                 <p>
                   <strong>AI-assisted delivery compounds.</strong> The same
                   teams use GitHub Copilot, Claude, and ChatGPT across the
-                  development lifecycle — so the people building AI workflows
+                  development lifecycle, so the people building AI workflows
                   were also shipping faster because of them.
                 </p>
               </Reveal>
@@ -468,7 +469,7 @@ export default function CaseStudyOnboarding() {
                   long-term impact.&rdquo;
                 </blockquote>
                 <footer>
-                  Qasim Salam — Co-Founder, Ember AI · CEO, Remotebase (managed
+                  Qasim Salam, Co-Founder, Ember AI · CEO, Remotebase (managed
                   me directly)
                 </footer>
               </Quote>
@@ -480,10 +481,10 @@ export default function CaseStudyOnboarding() {
                 <GradientText>bottleneck</GradientText>?
               </h2>
               <p>
-                I help product organizations apply AI where it moves business
-                metrics — as an engineering leader, fractional CTO, or
-                consultant. Let&rsquo;s talk about what that could look like for
-                your team.
+                I help SaaS and product companies apply AI where it moves
+                business metrics, as an engineering leader, fractional CTO, or
+                AI-assisted delivery consultant. Let&rsquo;s talk about what
+                that could look like for your team.
               </p>
               <CTAActions>
                 <Magnetic>

@@ -17,8 +17,7 @@ import {
 } from '../styles/ui';
 import { profile } from '../data/content';
 
-const PAGE_TITLE =
-  'Reliability & Observability Case Study — Dramatically Fewer Incidents | Muhammad Anas';
+const PAGE_TITLE = 'Reliability and Observability Case Study | Muhammad Anas';
 
 const TopBar = styled.header`
   height: ${({ theme }) => theme.layout.navH};
@@ -279,7 +278,7 @@ export default function CaseStudyReliability() {
     <>
       <TopBar>
         <TopBarInner>
-          <Link to="/" aria-label="Muhammad Anas — home">
+          <Link to="/" aria-label="Muhammad Anas home">
             <Logo size={20} animated={false} />
           </Link>
           <BackLink to="/">
@@ -296,18 +295,19 @@ export default function CaseStudyReliability() {
             </Reveal>
             <Reveal i={1}>
               <Title>
-                From firefighting to <GradientText>foresight</GradientText>: an
-                observability overhaul that dramatically cut production
-                incidents
+                Reliability and observability at Gridware: how an{' '}
+                <GradientText>observability overhaul</GradientText> dramatically
+                cut production incidents
               </Title>
             </Reveal>
             <Reveal i={2}>
               <Lede>
-                How I introduced observability practices across
-                Gridware&rsquo;s core platforms as Engineering Manager — so
-                problems were found by dashboards instead of customers,
-                incidents became dramatically rarer, and on-call went from
-                chaotic to calm.
+                I&rsquo;m Muhammad Anas. As Engineering Manager at Gridware I
+                introduced observability and incident management practices
+                across the core grid-monitoring platforms. Dashboards started
+                finding problems before customers did, production incidents
+                became dramatically rarer, and on-call went from chaotic to
+                calm.
               </Lede>
             </Reveal>
             <Reveal i={3}>
@@ -331,7 +331,7 @@ export default function CaseStudyReliability() {
                 </StatCard>
                 <StatCard i={2} max={5}>
                   <b>Calmer</b>
-                  <span>on-call — structured incident command, not panic</span>
+                  <span>on-call, run through structured incident command</span>
                 </StatCard>
                 <StatCard i={3} max={5}>
                   <b>C-level</b>
@@ -345,32 +345,33 @@ export default function CaseStudyReliability() {
                 <h2>The challenge</h2>
                 <p>
                   Gridware builds grid-monitoring technology, and the
-                  cloud-native and mobile-first platforms my teams ran sat in
-                  the critical path for external customers. As those platforms
+                  cloud-native, mobile-first platforms my teams ran sat in the
+                  critical path for external customers. As those platforms
                   scaled, production issues were too often discovered the worst
                   possible way: <strong>a customer noticed before our
                   dashboards did</strong>.
                 </p>
                 <p>
                   Each incident pulled engineers off the roadmap and into
-                  firefighting. Without shared visibility into what the systems
-                  were actually doing, diagnosis was slow, fixes were
-                  stressful, and reliability felt like luck rather than a
-                  property the team controlled.
+                  firefighting. Nobody had shared visibility into what the
+                  systems were actually doing, so diagnosis was slow and fixes
+                  were stressful. Reliability felt like luck. It wasn&rsquo;t
+                  yet something the team controlled.
                 </p>
               </Reveal>
 
               <Reveal as="div">
                 <h2>My role</h2>
                 <p>
-                  As Engineering Manager (via Remotebase) I owned both delivery
-                  and production stability across critical systems — designing
-                  serverless solutions on AWS using microservices and SOA with
-                  NestJS, streamlining delivery with GraphQL, AWS Amplify, and
-                  CI/CD pipelines, and working directly with C-level
-                  stakeholders and external customers on roadmap alignment.
-                  Incident management was mine end to end: if production broke,
-                  the buck stopped with me.
+                  As Engineering Manager, placed with Gridware through
+                  Remotebase and working remotely, I owned both delivery and
+                  production stability across critical systems. That meant
+                  designing serverless solutions on AWS using microservices and
+                  SOA with NestJS, streamlining delivery with GraphQL, AWS
+                  Amplify, and CI/CD pipelines, and working directly with
+                  C-level stakeholders and external customers on roadmap
+                  alignment. Incident management was mine end to end. If
+                  production broke, the buck stopped with me.
                 </p>
               </Reveal>
 
@@ -383,10 +384,10 @@ export default function CaseStudyReliability() {
                     <b>Instrument first</b>
                     <span>
                       Before changing any process, we made the systems
-                      observable: metrics, logs, and traces flowing from the
-                      core platforms into dashboards the whole team could read
-                      — the standard toolkit of the Datadog / Grafana /
-                      Prometheus / Sentry / CloudWatch class. You can&rsquo;t
+                      observable. Metrics, logs, and traces flowed from the
+                      core platforms into dashboards the whole team could read,
+                      built with the usual tools in this space: Datadog,
+                      Grafana, Prometheus, Sentry, and CloudWatch. You can&rsquo;t
                       fix what you can&rsquo;t see.
                     </span>
                   </div>
@@ -397,20 +398,20 @@ export default function CaseStudyReliability() {
                     <span>
                       We set SLO-style thresholds for the things users actually
                       feel, and wired alerting to user impact rather than raw
-                      noise — so a page meant something real was wrong, and
-                      quiet meant the platforms were genuinely fine.
+                      noise. A page meant something real was wrong, and quiet
+                      meant the platforms were genuinely fine.
                     </span>
                   </div>
                 </Step>
                 <Step i={2}>
                   <div>
-                    <b>Make incidents a process, not a panic</b>
+                    <b>Run incidents as a structured process</b>
                     <span>
                       We introduced structured incident command: clear severity
                       levels, a single owner per incident, predictable
-                      communication, and blameless post-incident reviews that
-                      turned every failure into a concrete improvement instead
-                      of a scar.
+                      communication, and blameless post-incident reviews. Every
+                      failure turned into a concrete improvement rather than a
+                      scar.
                     </span>
                   </div>
                 </Step>
@@ -436,32 +437,31 @@ export default function CaseStudyReliability() {
                   <Check />
                   <span>
                     <strong>Dramatically fewer production incidents</strong>{' '}
-                    across the core platforms — the firefighting that had been
+                    across the core platforms. The firefighting that had been
                     eating roadmap time largely disappeared.
                   </span>
                 </Reveal>
                 <Reveal as="li" i={1}>
                   <Check />
                   <span>
-                    <strong>Issues caught before customers noticed</strong> —
-                    dashboards and impact-based alerts surfaced problems while
+                    <strong>Issues caught before customers noticed.</strong>{' '}
+                    Dashboards and impact-based alerts surfaced problems while
                     they were still cheap to fix.
                   </span>
                 </Reveal>
                 <Reveal as="li" i={2}>
                   <Check />
                   <span>
-                    <strong>A real learning loop</strong> — blameless
+                    <strong>A real learning loop.</strong> Blameless
                     post-incident reviews fed directly into the backlog, so
-                    each incident made the system stronger instead of just
-                    older.
+                    each incident made the system stronger.
                   </span>
                 </Reveal>
                 <Reveal as="li" i={3}>
                   <Check />
                   <span>
-                    <strong>Stability across critical systems</strong> — calm,
-                    structured on-call and a reliability story C-level
+                    <strong>Stability across critical systems.</strong> Calm,
+                    structured on-call and a reliability record C-level
                     stakeholders and customers could trust.
                   </span>
                 </Reveal>
@@ -470,17 +470,17 @@ export default function CaseStudyReliability() {
               <Reveal as="div">
                 <h2>What made it work</h2>
                 <p>
-                  <strong>Observability is a product decision, not an ops
-                  chore.</strong> We treated instrumentation, dashboards, and
-                  alerting as part of the platform itself — planned, owned, and
-                  prioritized like any feature — instead of something bolted on
-                  after the next outage.
+                  <strong>Observability is a product decision.</strong> We
+                  treated instrumentation, dashboards, and alerting as part of
+                  the platform itself. They were planned, owned, and
+                  prioritized like any other feature, long before the next
+                  outage forced the issue.
                 </p>
                 <p>
                   <strong>SLOs turn reliability debates into data.</strong>{' '}
                   Once &ldquo;healthy&rdquo; was defined in terms of user
                   impact, conversations with C-level stakeholders stopped being
-                  about anecdotes and started being about thresholds — which
+                  about anecdotes and started being about thresholds. That
                   made it far easier to balance roadmap work against
                   reliability work.
                 </p>
@@ -500,7 +500,7 @@ export default function CaseStudyReliability() {
                   us.&rdquo;
                 </blockquote>
                 <footer>
-                  Hall Chen — Building the grid of the future (managed me
+                  Hall Chen, Building the grid of the future (managed me
                   directly)
                 </footer>
               </Quote>
@@ -513,9 +513,10 @@ export default function CaseStudyReliability() {
               </h2>
               <p>
                 I help product organizations make production stability a
-                managed outcome — observability, SLOs, and incident practices
-                that let teams ship fast without fear — as an engineering
-                leader, fractional CTO, or consultant.
+                managed outcome, through observability, SLOs, and incident
+                management practices that let teams ship fast without fear. I
+                do this as an engineering leader, fractional CTO, or
+                engineering leadership consultant.
               </p>
               <CTAActions>
                 <Magnetic>

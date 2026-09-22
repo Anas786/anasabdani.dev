@@ -149,7 +149,7 @@ export default function Footer() {
   return (
     <FooterEl>
       <Inner>
-        <Brand href="#top" aria-label="Muhammad Anas — home">
+        <Brand href="#top" aria-label="Muhammad Anas, back to the top of the page">
           <Logo size={18} animated={false} />
         </Brand>
 

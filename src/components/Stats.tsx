@@ -92,7 +92,7 @@ function CountUp({ value, suffix }: { value: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <Section aria-label="Impact metrics">
+    <Section aria-label="Career numbers at a glance">
       <Container>
         <Grid>
           {stats.map((s, i) => (

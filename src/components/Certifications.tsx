@@ -109,15 +109,16 @@ export default function Certifications() {
       <Container>
         <Parallax>
           <Reveal>
-            <Eyebrow>Credentials</Eyebrow>
+            <Eyebrow>Certifications</Eyebrow>
           </Reveal>
           <Reveal i={1}>
-            <SectionTitle>Certifications</SectionTitle>
+            <SectionTitle>Certifications and credentials</SectionTitle>
           </Reveal>
           <Reveal i={2}>
             <SectionSub>
-              Formal validation of my delivery leadership and forward-looking practice.
-              Each badge links to its public Credly verification.
+              I am PMP and PMI-ACP certified, with further PMI credentials in generative AI,
+              value stream management and citizen development, plus IBM Blockchain Essentials.
+              Every badge links to its public Credly record, so you can verify each one yourself.
             </SectionSub>
           </Reveal>
         </Parallax>

@@ -16,8 +16,7 @@ import {
   Section,
 } from '../styles/ui';
 
-const PAGE_TITLE =
-  'Engineering Leadership Case Studies — Delivery, AI, Reliability | Muhammad Anas';
+const PAGE_TITLE = 'Engineering Leadership Case Studies | Muhammad Anas';
 
 const TopBar = styled.header`
   height: ${({ theme }) => theme.layout.navH};
@@ -223,7 +222,7 @@ export default function CaseStudies() {
     <>
       <TopBar>
         <TopBarInner>
-          <Link to="/" aria-label="Muhammad Anas — home">
+          <Link to="/" aria-label="Muhammad Anas, home page">
             <Logo size={20} animated={false} />
           </Link>
           <BackLink to="/">
@@ -240,14 +239,15 @@ export default function CaseStudies() {
             </Reveal>
             <Reveal i={1}>
               <Title>
-                Proof over <GradientText>promises</GradientText>
+                Engineering leadership <GradientText>case studies</GradientText>
               </Title>
             </Reveal>
             <Reveal i={2}>
               <Lede>
-                Real initiatives, real outcomes. These write-ups show how I
-                lead engineering teams through delivery, AI adoption, and
-                reliability work — what the problem was, how we approached it,
+                I&rsquo;m Muhammad Anas, an Engineering Manager and fractional
+                CTO. These case studies show how I lead engineering teams
+                through delivery, AI adoption, and reliability work at SaaS
+                product companies: what the problem was, how we approached it,
                 and what changed for the business.
               </Lede>
             </Reveal>
@@ -258,9 +258,10 @@ export default function CaseStudies() {
                   <CardMeta>Flipdish · Food-tech SaaS</CardMeta>
                   <CardTitle>AI-assisted customer onboarding</CardTitle>
                   <CardOutcome>
-                    Rebuilt onboarding around AI-assisted menu creation —
-                    dramatically less manual effort per new restaurant and
-                    lower early-stage client churn.
+                    My teams rebuilt customer onboarding around AI-assisted
+                    menu creation. New restaurants now go live with far less
+                    manual effort per account, and early-stage client churn
+                    came down.
                   </CardOutcome>
                   <CardTags>
                     <Chip>AI / LLM workflows</Chip>
@@ -277,9 +278,10 @@ export default function CaseStudies() {
                   <CardMeta>Gridware · Grid-monitoring platforms</CardMeta>
                   <CardTitle>Reliability &amp; observability overhaul</CardTitle>
                   <CardOutcome>
-                    Introduced observability and incident-management practices
-                    across core platforms — significantly fewer production
-                    incidents and far more stable critical systems.
+                    I introduced observability and incident management
+                    practices across core platforms. Production incidents fell
+                    significantly and the critical systems became far more
+                    stable.
                   </CardOutcome>
                   <CardTags>
                     <Chip>Observability</Chip>
@@ -295,20 +297,22 @@ export default function CaseStudies() {
             <NoteStrip i={2}>
               <Sparkles />
               <span>
-                More case studies are being written — the work exists, the
+                More case studies are on the way. The work exists; the
                 write-ups are catching up.
               </span>
             </NoteStrip>
 
             <CTA>
               <h2>
-                Want <GradientText>outcomes</GradientText> like these?
+                Want <GradientText>outcomes</GradientText> like these for your
+                team?
               </h2>
               <p>
-                I take on engineering leadership, fractional CTO, and
-                consulting engagements focused on delivery, AI adoption, and
-                reliability. Let&rsquo;s talk about where your team is stuck —
-                and what it would take to get unstuck.
+                I take on engineering leadership consulting, fractional CTO,
+                and AI-assisted delivery engagements, usually centered on
+                delivery, AI adoption, and reliability. Let&rsquo;s talk about
+                where your team is stuck and what it would take to get
+                unstuck.
               </p>
               <CTAActions>
                 <Magnetic>

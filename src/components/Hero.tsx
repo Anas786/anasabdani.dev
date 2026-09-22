@@ -1,4 +1,4 @@
-import { useRef, type MouseEvent } from 'react';
+import { Fragment, useRef, type MouseEvent } from 'react';
 import {
   motion,
   useMotionValue,
@@ -134,15 +134,12 @@ const Title = styled(motion.h1)`
   }
 `;
 
+/* Words are separated by a real space text node (see Title markup) so the
+   heading's text content reads "Muhammad Anas" for crawlers and extractors;
+   a CSS margin would leave the words fused in the DOM text. */
 const Word = styled(motion.create(GradientText))`
   display: inline-block;
   will-change: transform, filter;
-
-  /* Space between words only — a trailing margin would widen the line box
-     and force a premature wrap. */
-  & + & {
-    margin-left: 0.22em;
-  }
 `;
 
 const Role = styled.span`
@@ -497,20 +494,23 @@ export default function Hero() {
             style={reduce ? undefined : { y: contentY }}
           >
             <Badge variants={item}>
-              <i /> Open to engineering leadership conversations
+              <i /> Open to engineering leadership and fractional CTO work
             </Badge>
 
             <Title variants={item}>
               {profile.shortName.split(' ').map((w, i) => (
-                <Word key={w} variants={reduce ? undefined : word} custom={i}>
-                  {w}
-                </Word>
-              ))}
+                <Fragment key={w}>
+                  {i > 0 ? ' ' : null}
+                  <Word variants={reduce ? undefined : word} custom={i}>
+                    {w}
+                  </Word>
+                </Fragment>
+              ))}{' '}
               <Role>
                 <RotatingText
                   words={[profile.role, 'Delivery Leader', 'Cloud-Native Architect', 'AI-Driven Builder']}
                 />{' '}
-                · 10+ years
+                and Fractional CTO
               </Role>
             </Title>
 
@@ -534,10 +534,10 @@ export default function Hero() {
                 <MapPin /> {profile.location}
               </span>
               <span>
-                <Layers /> Cloud-native · Serverless · Microservices
+                <Layers /> 10+ years shipping cloud-native, serverless software
               </span>
               <span>
-                <Sparkles /> AI-assisted delivery
+                <Sparkles /> AI-assisted delivery for SaaS teams
               </span>
             </Meta>
           </Left>
@@ -568,7 +568,7 @@ export default function Hero() {
                   <source srcSet="/anas.webp" type="image/webp" />
                   <img
                     src="/anas.jpg"
-                    alt="Muhammad Anas, Engineering Manager"
+                    alt="Muhammad Anas, Engineering Manager and Fractional CTO"
                     width={760}
                     height={1014}
                   />
@@ -590,7 +590,7 @@ export default function Hero() {
               </PCIcon>
               <div>
                 <b>Engineering Manager</b>
-                <small>Leading Agile teams @ Flipdish</small>
+                <small>Leading multiple Agile teams at Flipdish</small>
               </div>
             </PortraitCard>
           </Portrait>
@@ -598,7 +598,7 @@ export default function Hero() {
 
         <ScrollCue
           href="#about"
-          aria-label="Scroll to about section"
+          aria-label="Scroll to the About section"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.6 }}

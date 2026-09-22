@@ -111,15 +111,16 @@ export default function Skills() {
       <Container>
         <Parallax>
           <Reveal>
-            <Eyebrow>Toolkit</Eyebrow>
+            <Eyebrow>Skills</Eyebrow>
           </Reveal>
           <Reveal i={1}>
-            <SectionTitle>Skills & technologies</SectionTitle>
+            <SectionTitle>Skills and technologies</SectionTitle>
           </Reveal>
           <Reveal i={2}>
             <SectionSub>
-              The leadership practices and the full-stack, cloud-native toolset I use to ship
-              reliable software at scale.
+              These are the engineering leadership practices I run teams on, and the TypeScript,
+              Node.js, React and AWS toolset my teams use to ship cloud-native software that
+              stays reliable in production.
             </SectionSub>
           </Reveal>
         </Parallax>

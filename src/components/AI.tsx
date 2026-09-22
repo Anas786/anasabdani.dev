@@ -108,7 +108,7 @@ export default function AI() {
         <Parallax>
           <Reveal>
             <Eyebrow>
-              <Sparkles /> AI
+              <Sparkles /> AI-assisted delivery
             </Eyebrow>
           </Reveal>
           <Reveal i={1}>
@@ -131,7 +131,7 @@ export default function AI() {
                 <p>{h.desc}</p>
                 {h.title === 'AI-assisted delivery' && (
                   <CardLink to="/case-studies/ai-assisted-onboarding">
-                    Read the full case study <ArrowRight />
+                    Read the customer onboarding case study <ArrowRight />
                   </CardLink>
                 )}
               </Card>

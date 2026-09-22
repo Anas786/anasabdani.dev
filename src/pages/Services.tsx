@@ -28,8 +28,7 @@ import {
 } from '../styles/ui';
 import { profile } from '../data/content';
 
-const PAGE_TITLE =
-  'Fractional CTO & Engineering Leadership Consulting — SaaS / Food-tech | Muhammad Anas';
+const PAGE_TITLE = 'Fractional CTO and Engineering Leadership | Muhammad Anas';
 
 const TopBar = styled.header`
   height: ${({ theme }) => theme.layout.navH};
@@ -405,7 +404,7 @@ export default function Services() {
     <>
       <TopBar>
         <TopBarInner>
-          <Link to="/" aria-label="Muhammad Anas — home">
+          <Link to="/" aria-label="Muhammad Anas home">
             <Logo size={20} animated={false} />
           </Link>
           <BackLink to="/">
@@ -418,22 +417,24 @@ export default function Services() {
         <Head>
           <Container>
             <Reveal>
-              <Eyebrow>Services · Remote — US/UK/EU overlap</Eyebrow>
+              <Eyebrow>Services · Remote with US, UK and EU overlap</Eyebrow>
             </Reveal>
             <Reveal i={1}>
               <Title>
-                Fractional CTO &amp;{' '}
-                <GradientText>engineering leadership</GradientText> for SaaS and
-                food-tech teams
+                Fractional CTO and{' '}
+                <GradientText>engineering leadership consulting</GradientText>{' '}
+                for SaaS and food-tech teams
               </Title>
             </Reveal>
             <Reveal i={2}>
               <Lede>
-                I help SaaS and food-tech product companies ship faster and run
-                more reliably — owning delivery, architecture, AI adoption, and
-                reliability as a part-time engineering leader, consultant, or
-                advisor. The same work I do today leading multiple Agile teams
-                as an Engineering Manager at Flipdish, applied to your company.
+                I&rsquo;m Muhammad Anas, an Engineering Manager who works with
+                SaaS and food-tech product companies as a fractional CTO,
+                engineering leadership consultant, and advisor. I take part-time
+                ownership of delivery, architecture, AI adoption, and
+                reliability so your team ships faster and runs more reliably.
+                It&rsquo;s the same work I do today leading multiple Agile
+                teams at Flipdish, applied to your company.
               </Lede>
             </Reveal>
             <Reveal i={3}>
@@ -460,9 +461,10 @@ export default function Services() {
               </Reveal>
               <Reveal i={2}>
                 <SectionSub>
-                  From ongoing part-time leadership to a single expert call —
-                  every engagement is scoped around a business outcome, not a
-                  block of hours.
+                  I offer three engagement models: ongoing part-time
+                  leadership, a focused consulting project, or a single expert
+                  call. Each one is scoped around a business outcome, and we
+                  agree on that outcome before we talk about hours.
                 </SectionSub>
               </Reveal>
             </SectionHead>
@@ -472,12 +474,13 @@ export default function Services() {
                 <IconBadge>
                   <Users />
                 </IconBadge>
-                <h3>Fractional engineering leadership / CTO</h3>
+                <h3>Fractional CTO and engineering leadership</h3>
                 <p>
-                  Senior, part-time ownership of your engineering organization —
-                  delivery, architecture, and team growth. I run planning and
-                  prioritization, set technical direction, and report progress
-                  in business terms, the way I do for C-level leadership today.
+                  Senior, part-time ownership of your engineering organization,
+                  covering delivery, architecture, and team growth. I run
+                  planning and prioritization, set technical direction, and
+                  report progress in business terms, the way I do for C-level
+                  leadership today.
                 </p>
                 <MiniListLabel>What you get</MiniListLabel>
                 <MiniList>
@@ -485,7 +488,7 @@ export default function Services() {
                     <Check />
                     <span>
                       End-to-end delivery ownership: sprint planning, backlog
-                      prioritization, release execution
+                      prioritization, and release execution
                     </span>
                   </li>
                   <li>
@@ -498,7 +501,7 @@ export default function Services() {
                   <li>
                     <Check />
                     <span>
-                      Hiring, mentoring, and growing the team that outlasts the
+                      Hiring, mentoring, and growing a team that outlasts the
                       engagement
                     </span>
                   </li>
@@ -513,8 +516,8 @@ export default function Services() {
                 <p>
                   I find the real bottleneck in your delivery or operations,
                   then apply LLM-powered workflows with human-in-the-loop
-                  review — measured against your existing baseline. It&rsquo;s
-                  the playbook behind the{' '}
+                  review, and measure the result against your existing
+                  baseline. This is the playbook behind the{' '}
                   <Link to="/case-studies/ai-assisted-onboarding">
                     AI-assisted onboarding work at Flipdish
                   </Link>
@@ -525,22 +528,22 @@ export default function Services() {
                   <li>
                     <Check />
                     <span>
-                      Workflow mapping to find the highest-leverage bottleneck —
+                      Workflow mapping to find the bottleneck that matters most,
                       before any model is chosen
                     </span>
                   </li>
                   <li>
                     <Check />
                     <span>
-                      LLM workflow design with human review built in as a
-                      feature, not a compromise
+                      LLM workflow design with human review built into the
+                      quality gate from day one
                     </span>
                   </li>
                   <li>
                     <Check />
                     <span>
-                      AI tooling embedded across the development lifecycle —
-                      GitHub Copilot, Claude, ChatGPT
+                      AI tooling embedded across the development lifecycle:
+                      GitHub Copilot, Claude, and ChatGPT
                     </span>
                   </li>
                 </MiniList>
@@ -550,10 +553,10 @@ export default function Services() {
                 <IconBadge>
                   <Phone />
                 </IconBadge>
-                <h3>Advisory &amp; expert calls</h3>
+                <h3>Advisory and expert calls</h3>
                 <p>
-                  Focused senior input when you need a second opinion rather
-                  than a second pair of hands: architecture and system reviews,
+                  Focused senior input for when you need an experienced opinion
+                  in the room. That covers architecture and system reviews,
                   coaching for engineering leaders, and technical due diligence
                   for founders and investors.
                 </p>
@@ -570,7 +573,7 @@ export default function Services() {
                     <Check />
                     <span>
                       Leadership coaching for engineering managers and tech
-                      leads stepping up
+                      leads stepping into bigger roles
                     </span>
                   </li>
                   <li>
@@ -599,9 +602,9 @@ export default function Services() {
               </Reveal>
               <Reveal i={2}>
                 <SectionSub>
-                  Every engagement follows the same arc — understand the
-                  problem, frame it in business terms, execute with your team,
-                  and hand it off in a measurably better state.
+                  Every engagement follows the same four steps. I understand
+                  the problem, frame it in business terms, execute with your
+                  team, and hand it off in a measurably better state.
                 </SectionSub>
               </Reveal>
             </SectionHead>
@@ -613,8 +616,8 @@ export default function Services() {
                   <span>
                     A short, structured look at your goals, constraints, team,
                     and systems. The output is a clearly scoped engagement with
-                    a definition of done — not an open-ended retainer or a
-                    slide deck.
+                    a definition of done. You won&rsquo;t get an open-ended
+                    retainer or a slide deck.
                   </span>
                 </div>
               </Step>
@@ -622,12 +625,12 @@ export default function Services() {
                 <div>
                   <b>Business-metric framing</b>
                   <span>
-                    We agree on what success means in business terms —
-                    onboarding effort, churn, incident volume, delivery
-                    throughput — before any technical work starts. The goal is
-                    never &ldquo;adopt AI&rdquo; or &ldquo;refactor the
-                    platform&rdquo;; it&rsquo;s the metric those things should
-                    move.
+                    We agree on what success means in business terms before
+                    any technical work starts: onboarding effort, churn,
+                    incident volume, or delivery throughput. &ldquo;Adopt
+                    AI&rdquo; and &ldquo;refactor the platform&rdquo; are
+                    activities. The metric they should move is the real goal,
+                    so we name it first.
                   </span>
                 </div>
               </Step>
@@ -635,10 +638,10 @@ export default function Services() {
                 <div>
                   <b>Embedded execution</b>
                   <span>
-                    I work inside your existing team&rsquo;s rituals and tools —
-                    planning, code reviews, incident response — raising the bar
-                    from within rather than running a parallel consulting
-                    track that disappears when I do.
+                    I work inside your existing team&rsquo;s rituals and tools:
+                    planning, code reviews, and incident response. The point is
+                    to raise the bar from within. A parallel consulting track
+                    tends to disappear the day the consultant does.
                   </span>
                 </div>
               </Step>
@@ -646,10 +649,10 @@ export default function Services() {
                 <div>
                   <b>Measurable handoff</b>
                   <span>
-                    Engagements end with your team able to run what we built:
-                    documentation, named owners, and the metrics in place to
-                    keep it honest. Success means you don&rsquo;t need me
-                    anymore.
+                    Engagements end with your team able to run what we built.
+                    That means documentation, named owners, and the metrics in
+                    place to keep it honest. Success means you don&rsquo;t need
+                    me anymore.
                   </span>
                 </div>
               </Step>
@@ -665,13 +668,14 @@ export default function Services() {
               </Reveal>
               <Reveal i={1}>
                 <SectionTitle>
-                  Results, not <GradientText>promises</GradientText>
+                  Results from real <GradientText>product companies</GradientText>
                 </SectionTitle>
               </Reveal>
               <Reveal i={2}>
                 <SectionSub>
-                  The same playbook — bottleneck first, business metric first,
-                  humans in the loop — applied at real product companies.
+                  Two case studies where this playbook was applied in
+                  production: find the bottleneck, agree on the business
+                  metric, and keep people in the loop.
                 </SectionSub>
               </Reveal>
             </SectionHead>
@@ -679,12 +683,12 @@ export default function Services() {
             <ProofGrid>
               <Reveal i={0}>
                 <ProofCard to="/case-studies/ai-assisted-onboarding">
-                  <h3>AI-assisted customer onboarding — Flipdish</h3>
+                  <h3>AI-assisted customer onboarding at Flipdish</h3>
                   <p>
-                    How my teams rebuilt onboarding for a restaurant SaaS
-                    platform around AI-assisted menu creation — cutting manual
-                    effort, shortening time-to-live for new restaurants, and
-                    lowering early-stage client churn.
+                    How my teams rebuilt customer onboarding for a restaurant
+                    SaaS platform around AI-assisted menu creation. The work cut
+                    manual effort, shortened time-to-live for new restaurants,
+                    and lowered early-stage client churn.
                   </p>
                   <footer>
                     Read the case study <ArrowRight />
@@ -693,11 +697,11 @@ export default function Services() {
               </Reveal>
               <Reveal i={1}>
                 <ProofCard to="/case-studies/reliability-observability">
-                  <h3>Reliability &amp; observability — Gridware</h3>
+                  <h3>Reliability and observability at Gridware</h3>
                   <p>
                     How introducing observability practices across core
                     cloud-native platforms markedly reduced production
-                    incidents — and turned incident response from firefighting
+                    incidents, and turned incident response from firefighting
                     into an engineering discipline.
                   </p>
                   <footer>
@@ -721,7 +725,7 @@ export default function Services() {
                 have to build a complicated and reliable product.&rdquo;
               </blockquote>
               <footer>
-                A Bin Omar — Co-founder &amp; CPO at Gridware (managed me
+                A Bin Omar, Co-founder &amp; CPO at Gridware (managed me
                 directly)
               </footer>
             </Quote>
@@ -743,57 +747,58 @@ export default function Services() {
 
             <FAQList>
               <Reveal as="div" i={0}>
-                <h3>What does a fractional CTO actually do?</h3>
+                <h3>What does a fractional CTO do?</h3>
                 <p>
-                  A fractional CTO gives you senior technology leadership on a
-                  part-time basis: owning architecture decisions, delivery
-                  process, hiring, and the translation between business goals
-                  and engineering reality. You get the judgment of an
-                  experienced engineering leader without the cost or
-                  commitment of a full-time executive. In practice that means
-                  setting technical direction, unblocking delivery, and
-                  building the team and processes so the company can
-                  eventually run without me.
+                  A fractional CTO is a senior technology leader who works with
+                  a company part-time instead of as a full-time executive. In
+                  my case that means owning architecture decisions, the
+                  delivery process, hiring, and the translation between
+                  business goals and engineering reality. You get the judgment
+                  of an experienced engineering leader without the cost or
+                  commitment of a full-time hire. Day to day I set technical
+                  direction, unblock delivery, and build the team and processes
+                  so the company can eventually run without me.
                 </p>
               </Reveal>
 
               <Reveal as="div" i={1}>
-                <h3>How does a fractional engagement work?</h3>
+                <h3>How does a fractional CTO engagement work?</h3>
                 <p>
-                  It starts with a scoped discovery conversation: what you are
-                  trying to achieve, where things are stuck, and whether I am
-                  actually the right person to help. From there we agree on
-                  the business outcomes the engagement is accountable for and
-                  a recurring slice of my week. I work embedded with your
-                  existing team — remote, with regular checkpoints — and every
-                  engagement is designed around a clean handoff rather than
-                  long-term dependence.
+                  A fractional CTO engagement with me starts with a scoped
+                  discovery conversation: what you are trying to achieve, where
+                  things are stuck, and whether I am the right person to help.
+                  From there we agree on the business outcomes the engagement
+                  is accountable for and a recurring slice of my week. I work
+                  embedded with your existing team, fully remote, with regular
+                  checkpoints. Every engagement is designed around a clean
+                  handoff so your company never becomes dependent on me long
+                  term.
                 </p>
               </Reveal>
 
               <Reveal as="div" i={2}>
                 <h3>What kinds of companies do you work with?</h3>
                 <p>
-                  Mostly SaaS and food-tech product companies — I lead
-                  engineering at Flipdish, a restaurant ordering and
-                  management platform, and previously managed cloud-native and
-                  mobile-first platforms at Gridware. I am most useful where
-                  delivery has slowed down, reliability is hurting customers,
-                  or an AI initiative needs someone who has shipped one in
-                  production. The underlying stack I know best is TypeScript,
+                  I work mostly with SaaS and food-tech product companies. I
+                  lead engineering at Flipdish, a restaurant ordering and
+                  management SaaS platform, and previously managed cloud-native
+                  and mobile-first platforms at Gridware. I am most useful
+                  where delivery has slowed down, reliability is hurting
+                  customers, or an AI initiative needs someone who has shipped
+                  one in production. The stack I know best is TypeScript,
                   Node.js, React, and serverless microservices on AWS.
                 </p>
               </Reveal>
 
               <Reveal as="div" i={3}>
-                <h3>How do you bring AI into delivery?</h3>
+                <h3>How do you bring AI into software delivery?</h3>
                 <p>
-                  Bottleneck first, model second. I map the workflow, find
-                  where the hours actually go, and apply LLM-assisted
-                  workflows with human review on the quality gate — then
-                  measure the result against the pre-AI baseline. I also help
-                  teams adopt AI tooling like GitHub Copilot, Claude, and
-                  ChatGPT across the development lifecycle. The{' '}
+                  I start with the bottleneck and choose the model second. I
+                  map the workflow, find where the hours actually go, and apply
+                  LLM-assisted workflows with human review on the quality gate.
+                  Then I measure the result against the pre-AI baseline. I also
+                  help teams adopt AI tooling such as GitHub Copilot, Claude,
+                  and ChatGPT across the development lifecycle. The{' '}
                   <Link to="/case-studies/ai-assisted-onboarding">
                     Flipdish onboarding case study
                   </Link>{' '}
@@ -802,13 +807,13 @@ export default function Services() {
               </Reveal>
 
               <Reveal as="div" i={4}>
-                <h3>Where are you based and what time zones do you cover?</h3>
+                <h3>Where are you based and which time zones do you cover?</h3>
                 <p>
-                  I am based in Karachi, Pakistan and work fully remote. I
-                  keep structured overlap with US, UK, and EU time zones —
-                  I have spent years working directly with US-based
-                  stakeholders and customers — and run engagements async-first
-                  so progress does not depend on meetings.
+                  I am based in Karachi, Pakistan and work fully remote. I keep
+                  structured overlap with US, UK, and EU time zones, and I have
+                  spent years working directly with US-based stakeholders and
+                  customers. I run engagements async-first so progress does not
+                  depend on meetings.
                 </p>
               </Reveal>
             </FAQList>
@@ -823,10 +828,10 @@ export default function Services() {
                 <GradientText>30 minutes</GradientText>
               </h2>
               <p>
-                Bring the problem — slow delivery, a reliability mess, an AI
+                Bring the problem: slow delivery, a reliability mess, or an AI
                 initiative that is not landing. You will leave the call with an
                 honest read on whether I can help and what an engagement could
-                look like. No pitch deck, no obligation.
+                look like. No pitch deck and no obligation.
               </p>
               <CTAActions>
                 <Magnetic>

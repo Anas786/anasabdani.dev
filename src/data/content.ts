@@ -103,9 +103,9 @@ export const profile: Profile = {
   role: 'Engineering Manager',
   location: 'Karachi, Pakistan',
   tagline:
-    'Engineering Manager with 10+ years leading multi-team organizations and shipping scalable, cloud-native platforms.',
+    'Engineering Manager and fractional CTO with 10+ years leading multi-team organizations and shipping scalable, cloud-native platforms.',
   intro:
-    'I lead engineering teams that turn ambitious product bets into reliable, production-grade systems — owning delivery, architecture, and the people who make it happen.',
+    'I’m Muhammad Anas. I lead engineering teams that turn ambitious product bets into reliable, production-grade systems. That means owning delivery, architecture, and the people who make it happen.',
   email: 'anas_abdani@hotmail.com',
   phone: '+966 57 220 1977',
   phoneHref: '+966572201977',
@@ -128,11 +128,11 @@ export const stats: Stat[] = [
 ];
 
 export const about: About = {
-  heading: 'Leading with delivery, architecture & people in balance',
+  heading: 'Engineering leadership across delivery, architecture, and people',
   paragraphs: [
-    'Over the last decade I’ve grown from a hands-on engineer into an Engineering Manager who owns the full delivery lifecycle — from sprint planning and backlog prioritization to architectural direction and production reliability.',
-    'I currently lead multiple Agile teams at Flipdish, reporting directly to C-level leadership and aligning engineering execution with business priorities. I care deeply about observability, incident response, and building systems that stay reliable as they scale.',
-    'My toolkit spans Node.js, TypeScript, React & React Native, serverless and microservices on AWS, and modern CI/CD — but my real focus is creating the conditions where teams ship confidently and grow.',
+    'I’m Muhammad Anas, an Engineering Manager based in Karachi, Pakistan, working remotely with teams across US, UK and EU time zones. Over the last decade I’ve grown from a hands-on engineer into a leader who owns the full delivery lifecycle, from sprint planning and backlog prioritization to architectural direction and production reliability.',
+    'Today I lead multiple Agile teams at Flipdish, a restaurant ordering and management SaaS platform. I report directly to C-level leadership and keep engineering execution lined up with business priorities. I care a lot about observability, incident management, and building systems that stay reliable as they scale.',
+    'My toolkit spans Node.js, TypeScript, React and React Native, serverless and microservices on AWS, and modern CI/CD. The part I spend most of my energy on, though, is creating the conditions where teams ship confidently and grow.',
   ],
   highlights: [
     'End-to-end delivery ownership',
@@ -148,27 +148,28 @@ export const experience: ExperienceItem[] = [
   {
     company: 'Flipdish',
     role: 'Software Engineering Manager',
-    period: 'Apr 2025 — Present',
+    period: 'Apr 2025 to Present',
     current: true,
     logo: '/logos/flipdish.png',
     website: 'https://www.flipdish.com',
     points: [
-      'Significantly improved customer onboarding efficiency with AI-assisted onboarding and menu-creation workflows, reducing manual effort and early-stage client churn.',
+      'Lead customer onboarding automation: AI-assisted menu-creation workflows that have significantly reduced manual effort and early-stage client churn.',
       'Lead multiple Agile teams delivering concurrent product initiatives.',
       'Own end-to-end delivery: sprint planning, backlog prioritization, and release execution.',
-      'Report directly to C-level leadership, aligning engineering with business priorities.',
+      'Report directly to C-level leadership, keeping engineering aligned with business priorities.',
       'Drive architectural decisions for scalability, reliability, security, and performance.',
-      'Act as Incident Manager, leading production incidents and post-incident reviews.',
+      'Act as Incident Manager, running production incident management and post-incident reviews.',
     ],
   },
   {
     company: 'Devsy',
     role: 'Fractional CTO',
-    period: 'Sep 2023 — Present',
+    period: 'Sep 2023 to Present',
     current: true,
+    logo: '/logos/devsy.png',
     website: 'https://devsy.tech',
     points: [
-      'Lead the vision and execution of AI-first products and intelligent agents built to solve real business problems.',
+      'Set the vision and run execution for AI-first products and intelligent agents built to solve real business problems.',
       'Shape product architecture, platform strategy, and engineering culture from the ground up.',
       'Stay hands-on, building autonomous agents, GenAI-powered workflows, and cloud-native platforms that scale with customers.',
       'Build engineering teams around fast feedback loops and a culture of ownership and experimentation.',
@@ -177,12 +178,13 @@ export const experience: ExperienceItem[] = [
   {
     company: 'Remotebase',
     role: 'Senior Software Engineering Manager',
-    period: 'Aug 2021 — May 2025',
+    period: 'Aug 2021 to May 2025',
+    logo: '/logos/remotebase.png',
     website: 'https://remotebase.com',
     roles: [
-      { title: 'Senior Software Engineering Manager', period: 'Jul 2023 — May 2025' },
-      { title: 'Software Engineering Manager', period: 'Aug 2022 — Aug 2023' },
-      { title: 'Senior Software Engineer', period: 'Aug 2021 — Sep 2022' },
+      { title: 'Senior Software Engineering Manager', period: 'Jul 2023 to May 2025' },
+      { title: 'Software Engineering Manager', period: 'Aug 2022 to Aug 2023' },
+      { title: 'Senior Software Engineer', period: 'Aug 2021 to Sep 2022' },
     ],
     points: [
       'Placed with US clients through Remotebase and promoted twice in under two years, from Senior Software Engineer to Senior Software Engineering Manager.',
@@ -193,12 +195,12 @@ export const experience: ExperienceItem[] = [
   {
     company: 'Gridware',
     role: 'Software Engineering Manager',
-    period: 'Jan 2024 — Apr 2025',
+    period: 'Jan 2024 to Apr 2025',
     note: 'via Remotebase',
     logo: '/logos/gridware.png',
     website: 'https://www.gridware.io',
     points: [
-      'Reduced production incidents by ~50% by introducing observability practices across core platforms.',
+      'Reduced production incidents by about 50% by introducing observability practices across core platforms.',
       'Managed and delivered cloud-native and mobile-first platforms.',
       'Designed serverless solutions on AWS using microservices and SOA (NestJS).',
       'Streamlined delivery with GraphQL, AWS Amplify, and CI/CD pipelines.',
@@ -209,12 +211,12 @@ export const experience: ExperienceItem[] = [
   {
     company: 'Northwestern Mutual',
     role: 'Technical Team Lead',
-    period: 'Aug 2022 — Dec 2023',
+    period: 'Aug 2022 to Dec 2023',
     note: 'via Remotebase',
     logo: '/logos/northwestern.svg',
     website: 'https://www.northwesternmutual.com',
     points: [
-      'Increased delivery throughput by up to 50% by implementing Agile and Scrum best practices.',
+      'Increased delivery throughput by up to 50% by putting Agile and Scrum practices into place.',
       'Led cross-functional teams across frontend, backend, and DevOps workstreams.',
       'Delivered scalable applications using React Native and FastAPI.',
       'Designed and managed AWS-based CI/CD and deployment pipelines.',
@@ -224,27 +226,27 @@ export const experience: ExperienceItem[] = [
   {
     company: 'Capbase',
     role: 'Senior Software Engineer',
-    period: 'Aug 2021 — Aug 2022',
+    period: 'Aug 2021 to Aug 2022',
     note: 'via Remotebase',
     logo: '/logos/capbase.png',
     website: 'https://capbase.com',
     points: [
       'Architected serverless systems using AWS Lambda and a microservices-based design.',
       'Built and maintained backend services using GraphQL and AWS Amplify.',
-      'Ensured code quality through unit testing, reviews, and delivery standards.',
+      'Kept code quality high through unit testing, reviews, and delivery standards.',
       'Supported onboarding, mentoring, and technical growth of team members.',
     ],
   },
   {
     company: 'TLX Mobility',
     role: 'Senior Software Engineer',
-    period: 'Oct 2017 — Aug 2021',
+    period: 'Oct 2017 to Aug 2021',
     note: 'a Techlogix company',
     logo: '/logos/techlogix.png',
     website: 'https://www.techlogix.com',
     roles: [
-      { title: 'Senior Software Engineer', period: 'Apr 2020 — Aug 2021' },
-      { title: 'Software Engineer', period: 'Oct 2017 — Apr 2020' },
+      { title: 'Senior Software Engineer', period: 'Apr 2020 to Aug 2021' },
+      { title: 'Software Engineer', period: 'Oct 2017 to Apr 2020' },
     ],
     points: [
       'Developed serverless applications using Azure Functions and microservices-based APIs.',
@@ -258,7 +260,7 @@ export const experience: ExperienceItem[] = [
   {
     company: 'KNYSYS',
     role: 'Junior Software Developer',
-    period: 'Aug 2016 — Oct 2017',
+    period: 'Aug 2016 to Oct 2017',
     logo: '/logos/knysys.png',
     website: 'https://www.knysys.com',
     points: [
@@ -271,7 +273,8 @@ export const experience: ExperienceItem[] = [
   {
     company: 'Meezan Bank Limited',
     role: 'Android Developer Intern',
-    period: 'Jun 2016 — Jul 2016',
+    period: 'Jun 2016 to Jul 2016',
+    logo: '/logos/meezan.png',
     website: 'https://www.meezanbank.com',
     points: [
       'Built an Android app on the YouTube and Google Maps APIs.',
@@ -348,21 +351,21 @@ export const certifications: Certification[] = [
   {
     title: 'Project Management Professional (PMP)®',
     issuer: 'PMI',
-    desc: 'Advanced capability in leading complex projects — scope, timelines, risk, stakeholders, and delivery execution.',
+    desc: 'Advanced capability in leading complex projects: scope, timelines, risk, stakeholders, and delivery execution.',
     image: '/badges/pmp.png',
     url: 'https://www.credly.com/badges/966ad4b3-bc0b-458d-a980-8bc7c3f08a87',
   },
   {
     title: 'PMI Agile Certified Practitioner (PMI-ACP)®',
     issuer: 'PMI',
-    desc: 'Hands-on expertise in Agile methodologies including Scrum, Kanban, Lean, and adaptive delivery.',
+    desc: 'Hands-on expertise in Agile methods including Scrum, Kanban, Lean, and adaptive delivery.',
     image: '/badges/pmi-acp.png',
     url: 'https://www.credly.com/badges/90d3ba5f-953f-4a46-9824-3b98478630c3/public_url',
   },
   {
     title: 'Value Stream Management',
     issuer: 'PMI',
-    desc: 'Optimizing the end-to-end flow of value — reducing waste and improving delivery efficiency.',
+    desc: 'Optimizing the end-to-end flow of value by reducing waste and improving delivery efficiency.',
     image: '/badges/value-stream.png',
     url: 'https://www.credly.com/badges/c7661d42-96a1-4e8a-a626-7b52bb417ec0',
   },
@@ -383,14 +386,14 @@ export const certifications: Certification[] = [
   {
     title: 'PMI Citizen Developer™ Practitioner',
     issuer: 'PMI',
-    desc: 'Building solutions on low-code / no-code platforms following citizen-developer best practices.',
+    desc: 'Building solutions on low-code and no-code platforms following citizen-developer best practices.',
     image: '/badges/pmi-citizen-practitioner.png',
     url: 'https://www.credly.com/badges/1ab76cd6-f57c-4636-a3bb-2b3199a732b4',
   },
   {
     title: 'PMI Citizen Developer™ Business Architect',
     issuer: 'PMI',
-    desc: 'Architecting low-code / no-code solutions and aligning them to business needs.',
+    desc: 'Architecting low-code and no-code solutions and lining them up with business needs.',
     image: '/badges/pmi-citizen-architect.png',
     url: 'https://www.credly.com/badges/9bd1babc-2c6a-4cff-91b8-e503726d19f9',
   },
@@ -415,7 +418,7 @@ export const testimonials: Testimonial[] = [
     title: 'Co-Founder, Ember AI · CEO, Remotebase',
     relation: 'Managed Anas directly · 2026',
     quote:
-      'Anas is one of the most incredible engineers I’ve worked with, and someone I deeply trust on both technical and organizational matters. His engineering skills are exceptional, he has strong judgment, writes clean and scalable code, and consistently thinks a few steps ahead when it comes to architecture and long-term impact.\n\nWhat truly sets Anas apart, though, is that he goes far beyond his individual responsibilities. He genuinely cares about the people around him and actively works to build a strong, healthy culture within the organization. He mentors others, raises the bar for quality, and creates an environment where teams feel motivated, aligned, and proud of what they’re building.\n\nAnas combines technical excellence with leadership, ownership, and integrity — a rare combination that makes him invaluable to any team. Any organization would be lucky to have him.',
+      'Anas is one of the most incredible engineers I’ve worked with, and someone I deeply trust on both technical and organizational matters. His engineering skills are exceptional, he has strong judgment, writes clean and scalable code, and consistently thinks a few steps ahead when it comes to architecture and long-term impact.\n\nWhat truly sets Anas apart, though, is that he goes far beyond his individual responsibilities. He genuinely cares about the people around him and actively works to build a strong, healthy culture within the organization. He mentors others, raises the bar for quality, and creates an environment where teams feel motivated, aligned, and proud of what they’re building.\n\nAnas combines technical excellence with leadership, ownership, and integrity, a rare combination that makes him invaluable to any team. Any organization would be lucky to have him.',
   },
   {
     name: 'A Bin Omar',
@@ -455,7 +458,7 @@ export const testimonials: Testimonial[] = [
     title: 'Principal Software Engineer @ 10Pearls',
     relation: 'Worked with Anas · 2017',
     quote:
-      'One of the best software development all-rounders I’ve ever worked with. Ask him to work on any tech on earth and he wouldn’t say no. Apart from technical expertise — especially mobile development — he is also very good at time management, and knows how to balance his full-time studies despite being a regular at the workplace.',
+      'One of the best software development all-rounders I’ve ever worked with. Ask him to work on any tech on earth and he wouldn’t say no. Apart from technical expertise, especially mobile development, he is also very good at time management, and knows how to balance his full-time studies despite being a regular at the workplace.',
   },
   {
     name: 'Muhammad Aamir',
@@ -475,44 +478,44 @@ export const testimonials: Testimonial[] = [
     title: 'Engineering Manager · AI Engineer',
     relation: 'Worked with Anas · 2017',
     quote:
-      'Always ready to learn. Worked with him on Python technology — he gives 100% on every task assigned to him and has delivered many research-based Python projects.',
+      'Always ready to learn. Worked with him on Python technology. He gives 100% on every task assigned to him and has delivered many research-based Python projects.',
   },
 ];
 
 export const ai: AI = {
-  heading: 'Engineering leadership in the age of AI',
+  heading: 'How I use AI in engineering delivery',
   intro:
-    'I weave AI into how teams build and ship — from AI-assisted onboarding that dramatically cut manual effort, to embedding LLM tools across the everyday engineering workflow.',
+    'I build AI into how my teams work and ship. At Flipdish that meant AI-assisted customer onboarding that significantly cut manual effort. Day to day it means LLM tools embedded across the engineering workflow, from prototyping to code review.',
   highlights: [
     {
       icon: 'sparkles',
       title: 'AI-assisted delivery',
-      desc: 'Led AI-assisted onboarding and menu-creation workflows at Flipdish — significantly more efficient onboarding and lower early-stage client churn.',
+      desc: 'Led AI-assisted customer onboarding and menu-creation workflows at Flipdish. Onboarding became significantly more efficient and early-stage client churn came down.',
     },
     {
       icon: 'food',
-      title: 'Lugmety — Food Recommendation AI',
-      desc: 'Shipped Lugmety’s food recommendation engine — surfacing personalized dish and menu suggestions from order history and taste signals to grow basket size and repeat orders.',
+      title: 'Lugmety: Food Recommendation AI',
+      desc: 'Shipped Lugmety’s food recommendation engine. It surfaces personalized dish and menu suggestions from order history and taste signals to grow basket size and repeat orders.',
     },
     {
       icon: 'delivery',
-      title: 'Salasa — Delivery Estimation AI',
-      desc: 'Built Salasa’s delivery-time estimation model — predicting accurate ETAs from routes, load, and historical patterns to sharpen fulfillment planning and customer trust.',
+      title: 'Salasa: Delivery Estimation AI',
+      desc: 'Built Salasa’s delivery-time estimation model. It predicts accurate ETAs from routes, load, and historical patterns, which tightens fulfillment planning and earns customer trust.',
     },
     {
       icon: 'code',
       title: 'AI-augmented engineering',
-      desc: 'Embed GitHub Copilot, Claude, and ChatGPT across the SDLC for faster prototyping, sharper code reviews, and quicker bug resolution.',
+      desc: 'My teams use GitHub Copilot, Claude, and ChatGPT across the SDLC, mainly to prototype faster and to get more out of code review and bug fixing.',
     },
     {
       icon: 'award',
-      title: 'GenAI, formally certified',
-      desc: 'Certified in Generative AI for Project Managers — applying GenAI to planning, decision-making, risk, and data governance.',
+      title: 'PMI certified in Generative AI',
+      desc: 'Certified by PMI in Generative AI for Project Managers, covering how to apply GenAI to planning, decision-making, risk, and data governance.',
     },
     {
       icon: 'layers',
       title: 'LLM-enabled products',
-      desc: 'Guide teams to integrate LLMs into products with sound prompt design, evaluation, and reliability practices.',
+      desc: 'I guide teams integrating LLMs into products, with close attention to prompt design, evaluation, and reliability practices.',
     },
   ],
   tools: [

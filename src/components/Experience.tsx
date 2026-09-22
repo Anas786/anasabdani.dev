@@ -395,12 +395,13 @@ export default function Experience() {
             <Eyebrow>Experience</Eyebrow>
           </Reveal>
           <Reveal i={1}>
-            <SectionTitle>A decade of building & leading</SectionTitle>
+            <SectionTitle>Ten years of building software and leading engineering teams</SectionTitle>
           </Reveal>
           <Reveal i={2}>
             <SectionSub>
-              From hands-on engineering to managing multiple teams — owning delivery,
-              architecture, and reliability across product organizations.
+              I started as a hands-on software engineer and now manage multiple Agile teams
+              as an Engineering Manager. Along the way I’ve owned delivery, cloud-native
+              architecture, and reliability at SaaS and product companies, mostly remote.
             </SectionSub>
           </Reveal>
         </Parallax>

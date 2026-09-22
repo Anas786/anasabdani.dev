@@ -77,7 +77,7 @@ export default function About() {
         <Grid>
           <Copy>
             <Reveal>
-              <Eyebrow>About</Eyebrow>
+              <Eyebrow>About Muhammad Anas</Eyebrow>
             </Reveal>
             <Reveal i={1}>
               <SectionTitle>{about.heading}</SectionTitle>

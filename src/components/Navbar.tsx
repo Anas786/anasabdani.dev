@@ -217,7 +217,7 @@ export default function Navbar() {
         onFocusCapture={() => setHidden(false)}
       >
         <Inner>
-          <Brand href="#top" aria-label="Muhammad Anas — home">
+          <Brand href="#top" aria-label="Muhammad Anas, home">
             <Logo size={20} />
           </Brand>
 

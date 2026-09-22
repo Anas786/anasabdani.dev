@@ -17,62 +17,149 @@ const serverDir = join(distDir, 'server');
 
 const SITE = 'https://www.anasabdani.dev';
 
-const CASE_STUDY_LD = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Cutting customer onboarding effort dramatically with AI-assisted workflows',
-  description:
-    'Case study: how AI-assisted onboarding and menu-creation workflows significantly cut customer onboarding effort and reduced early-stage churn at food-tech SaaS Flipdish.',
-  // Full ISO 8601 datetimes — GSC flags bare dates as invalid (non-critical).
-  datePublished: '2026-06-12T18:00:00+05:00',
-  dateModified: '2026-06-12T18:00:00+05:00',
-  mainEntityOfPage: `${SITE}/case-studies/ai-assisted-onboarding`,
-  author: { '@type': 'Person', '@id': `${SITE}/#person`, name: 'Muhammad Anas', url: `${SITE}/` },
-  keywords:
-    'AI-assisted onboarding, customer onboarding automation, menu digitization, food-tech SaaS, engineering leadership',
-};
+const PERSON = { '@type': 'Person', '@id': `${SITE}/#person`, name: 'Muhammad Anas', url: `${SITE}/` };
 
-const RELIABILITY_LD = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'From firefighting to foresight: an observability overhaul that dramatically cut production incidents',
-  description:
-    'Case study: how observability practices, SLO-driven alerting, and structured incident management dramatically reduced production incidents at Gridware.',
-  datePublished: '2026-06-12T18:00:00+05:00',
-  dateModified: '2026-06-12T18:00:00+05:00',
-  mainEntityOfPage: `${SITE}/case-studies/reliability-observability`,
-  author: { '@type': 'Person', '@id': `${SITE}/#person`, name: 'Muhammad Anas', url: `${SITE}/` },
-  keywords:
-    'observability, SRE, incident management, SLOs, production reliability, engineering leadership',
-};
+// Page titles as rendered in each page's <h1>. Keep these in sync with
+// src/pages/*.tsx so the Article headline matches the visible heading.
+const ONBOARDING_H1 =
+  'AI-assisted customer onboarding at Flipdish: cutting manual effort dramatically for a food-tech SaaS';
+const RELIABILITY_H1 =
+  'Reliability and observability at Gridware: how an observability overhaul dramatically cut production incidents';
+
+const crumb = (position, name, url) => ({ '@type': 'ListItem', position, name, item: url });
+const breadcrumbs = (...items) => ({
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map(([name, url], i) => crumb(i + 1, name, url)),
+});
+
+// Copied verbatim from the FAQ section in src/pages/Services.tsx (the Q4
+// answer's inline link is flattened to plain text).
+const SERVICES_FAQ = [
+  {
+    q: 'What does a fractional CTO do?',
+    a: 'A fractional CTO is a senior technology leader who works with a company part-time instead of as a full-time executive. In my case that means owning architecture decisions, the delivery process, hiring, and the translation between business goals and engineering reality. You get the judgment of an experienced engineering leader without the cost or commitment of a full-time hire. Day to day I set technical direction, unblock delivery, and build the team and processes so the company can eventually run without me.',
+  },
+  {
+    q: 'How does a fractional CTO engagement work?',
+    a: 'A fractional CTO engagement with me starts with a scoped discovery conversation: what you are trying to achieve, where things are stuck, and whether I am the right person to help. From there we agree on the business outcomes the engagement is accountable for and a recurring slice of my week. I work embedded with your existing team, fully remote, with regular checkpoints. Every engagement is designed around a clean handoff so your company never becomes dependent on me long term.',
+  },
+  {
+    q: 'What kinds of companies do you work with?',
+    a: 'I work mostly with SaaS and food-tech product companies. I lead engineering at Flipdish, a restaurant ordering and management SaaS platform, and previously managed cloud-native and mobile-first platforms at Gridware. I am most useful where delivery has slowed down, reliability is hurting customers, or an AI initiative needs someone who has shipped one in production. The stack I know best is TypeScript, Node.js, React, and serverless microservices on AWS.',
+  },
+  {
+    q: 'How do you bring AI into software delivery?',
+    a: 'I start with the bottleneck and choose the model second. I map the workflow, find where the hours actually go, and apply LLM-assisted workflows with human review on the quality gate. Then I measure the result against the pre-AI baseline. I also help teams adopt AI tooling such as GitHub Copilot, Claude, and ChatGPT across the development lifecycle. The Flipdish onboarding case study walks through this approach end to end.',
+  },
+  {
+    q: 'Where are you based and which time zones do you cover?',
+    a: 'I am based in Karachi, Pakistan and work fully remote. I keep structured overlap with US, UK, and EU time zones, and I have spent years working directly with US-based stakeholders and customers. I run engagements async-first so progress does not depend on meetings.',
+  },
+];
 
 const SERVICES_LD = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Fractional CTO & Engineering Leadership Consulting',
-  serviceType: [
-    'Fractional CTO',
-    'Engineering Leadership',
-    'AI-Assisted Delivery Consulting',
-    'Architecture & Reliability Advisory',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${SITE}/services#service`,
+      name: 'Fractional CTO and Engineering Leadership Consulting',
+      serviceType: [
+        'Fractional CTO',
+        'Engineering Leadership Consulting',
+        'AI-Assisted Delivery Consulting',
+        'Architecture and Reliability Advisory',
+      ],
+      description:
+        'Muhammad Anas offers fractional CTO and engineering leadership consulting, AI-assisted delivery consulting, and advisory calls for SaaS and food-tech product companies. Engagements are fully remote with US, UK and EU time-zone overlap.',
+      provider: PERSON,
+      areaServed: ['United States', 'United Kingdom', 'European Union', 'Remote'],
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        serviceUrl: `${SITE}/#work`,
+        availableLanguage: 'English',
+      },
+      url: `${SITE}/services`,
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE}/services#faq`,
+      mainEntity: SERVICES_FAQ.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    },
+    breadcrumbs(['Home', `${SITE}/`], ['Services', `${SITE}/services`]),
   ],
-  description:
-    'Fractional engineering leadership, AI-assisted delivery consulting, and advisory for SaaS and food-tech product companies. Remote, with US/UK/EU overlap.',
-  provider: { '@type': 'Person', '@id': `${SITE}/#person`, name: 'Muhammad Anas', url: `${SITE}/` },
-  areaServed: 'Remote — US, UK, EU time-zone overlap',
-  url: `${SITE}/services`,
 };
 
 const CASE_INDEX_LD = {
   '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: 'Engineering Leadership Case Studies',
-  description:
-    'Case studies in delivery leadership, AI adoption, and production reliability by Muhammad Anas.',
-  url: `${SITE}/case-studies`,
-  hasPart: [
-    { '@type': 'Article', url: `${SITE}/case-studies/ai-assisted-onboarding` },
-    { '@type': 'Article', url: `${SITE}/case-studies/reliability-observability` },
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': `${SITE}/case-studies#page`,
+      name: 'Engineering Leadership Case Studies',
+      description:
+        'Case studies by Muhammad Anas, Engineering Manager and fractional CTO, covering AI-assisted delivery, customer onboarding automation, and production reliability at SaaS product companies.',
+      url: `${SITE}/case-studies`,
+      author: PERSON,
+      hasPart: [
+        { '@type': 'Article', url: `${SITE}/case-studies/ai-assisted-onboarding`, headline: ONBOARDING_H1 },
+        { '@type': 'Article', url: `${SITE}/case-studies/reliability-observability`, headline: RELIABILITY_H1 },
+      ],
+    },
+    breadcrumbs(['Home', `${SITE}/`], ['Case studies', `${SITE}/case-studies`]),
+  ],
+};
+
+const CASE_STUDY_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${SITE}/case-studies/ai-assisted-onboarding#article`,
+      headline: ONBOARDING_H1,
+      description:
+        'Case study: how Muhammad Anas and his teams at Flipdish rebuilt customer onboarding around AI-assisted menu creation, significantly cutting onboarding effort and reducing early-stage churn for a food-tech SaaS platform.',
+      // Full ISO 8601 datetimes — GSC flags bare dates as invalid (non-critical).
+      datePublished: '2026-06-12T18:00:00+05:00',
+      dateModified: '2026-09-23T00:00:00+05:00',
+      mainEntityOfPage: `${SITE}/case-studies/ai-assisted-onboarding`,
+      author: PERSON,
+      keywords:
+        'AI-assisted onboarding, customer onboarding automation, menu digitization, food-tech SaaS, engineering leadership, AI-assisted delivery',
+    },
+    breadcrumbs(
+      ['Home', `${SITE}/`],
+      ['Case studies', `${SITE}/case-studies`],
+      [ONBOARDING_H1, `${SITE}/case-studies/ai-assisted-onboarding`]
+    ),
+  ],
+};
+
+const RELIABILITY_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${SITE}/case-studies/reliability-observability#article`,
+      headline: RELIABILITY_H1,
+      description:
+        'Case study: how Muhammad Anas, as Engineering Manager at Gridware, introduced observability practices, SLO-driven alerting, and structured incident management that dramatically reduced production incidents.',
+      datePublished: '2026-06-12T18:00:00+05:00',
+      dateModified: '2026-09-23T00:00:00+05:00',
+      mainEntityOfPage: `${SITE}/case-studies/reliability-observability`,
+      author: PERSON,
+      keywords:
+        'observability, SRE, incident management, SLOs, production reliability, cloud-native, AWS, engineering leadership',
+    },
+    breadcrumbs(
+      ['Home', `${SITE}/`],
+      ['Case studies', `${SITE}/case-studies`],
+      [RELIABILITY_H1, `${SITE}/case-studies/reliability-observability`]
+    ),
   ],
 };
 
@@ -82,39 +169,36 @@ const ROUTES = [
   {
     path: '/services',
     out: join('services', 'index.html'),
-    title:
-      'Fractional CTO & Engineering Leadership Consulting — SaaS / Food-tech | Muhammad Anas',
+    title: 'Fractional CTO and Engineering Leadership | Muhammad Anas',
     description:
-      'Fractional CTO, engineering leadership, and AI-assisted delivery consulting for SaaS and food-tech companies. Remote with US/UK/EU overlap. Book an intro call.',
+      'Fractional CTO, engineering leadership consulting, and AI-assisted delivery from Muhammad Anas for SaaS and food-tech companies. Fully remote, with US, UK and EU time-zone overlap.',
     canonical: `${SITE}/services`,
     jsonLd: SERVICES_LD,
   },
   {
     path: '/case-studies',
     out: join('case-studies', 'index.html'),
-    title: 'Engineering Leadership Case Studies — Delivery, AI, Reliability | Muhammad Anas',
+    title: 'Engineering Leadership Case Studies | Muhammad Anas',
     description:
-      'Real initiatives, real outcomes: case studies in AI-assisted delivery, customer onboarding automation, and production reliability from Muhammad Anas.',
+      'Case studies by Muhammad Anas, Engineering Manager and fractional CTO: AI-assisted delivery, customer onboarding automation, and production reliability in SaaS.',
     canonical: `${SITE}/case-studies`,
     jsonLd: CASE_INDEX_LD,
   },
   {
     path: '/case-studies/reliability-observability',
     out: join('case-studies', 'reliability-observability', 'index.html'),
-    title:
-      'Reliability & Observability Case Study — Dramatically Fewer Incidents | Muhammad Anas',
+    title: 'Reliability and Observability Case Study | Muhammad Anas',
     description:
-      'How observability practices, SLO-driven alerting, and structured incident management dramatically reduced production incidents at Gridware.',
+      'How Muhammad Anas, Engineering Manager at Gridware, used observability, SLO-driven alerting, and incident management to dramatically cut production incidents.',
     canonical: `${SITE}/case-studies/reliability-observability`,
     jsonLd: RELIABILITY_LD,
   },
   {
     path: '/case-studies/ai-assisted-onboarding',
     out: join('case-studies', 'ai-assisted-onboarding', 'index.html'),
-    title:
-      'AI-Assisted Customer Onboarding Case Study — Faster Onboarding, Lower Churn | Muhammad Anas',
+    title: 'AI-Assisted Customer Onboarding Case Study | Muhammad Anas',
     description:
-      'How AI-assisted onboarding and menu-creation workflows significantly cut customer onboarding effort and reduced early-stage churn at food-tech SaaS Flipdish.',
+      'How Muhammad Anas and his Flipdish teams used AI-assisted onboarding and menu creation workflows to significantly cut onboarding effort and reduce early churn.',
     canonical: `${SITE}/case-studies/ai-assisted-onboarding`,
     jsonLd: CASE_STUDY_LD,
   },

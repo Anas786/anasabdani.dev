@@ -68,13 +68,14 @@ export default function WorkWithMe() {
             </Eyebrow>
           </Reveal>
           <Reveal i={1}>
-            <SectionTitle>Book a slot — let’s talk</SectionTitle>
+            <SectionTitle>Book a call with me</SectionTitle>
           </Reveal>
           <Reveal i={2}>
             <SectionSub>
-              Hiring for an engineering leadership role, scoping a delivery
-              challenge, or just curious about how I lead teams? Pick a time
-              that works for you and we’ll jump on a call.
+              You can book a call with me directly through Calendly. Whether you’re
+              hiring an Engineering Manager, looking for a fractional CTO, or scoping an
+              AI-assisted delivery problem, pick a time that suits you and we’ll talk it
+              through.
             </SectionSub>
           </Reveal>
         </Parallax>

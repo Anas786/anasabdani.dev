@@ -79,7 +79,7 @@ export default function Marquee({
   duration = 36,
   reverse = false,
   gap = 14,
-  label = 'Scrolling list — focus or hover to pause',
+  label = 'Scrolling list. Focus or hover to pause.',
   className,
 }: MarqueeProps) {
   return (
