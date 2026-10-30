@@ -428,7 +428,7 @@ export default function Services() {
             </Reveal>
             <Reveal i={2}>
               <Lede>
-                I&rsquo;m Muhammad Anas, an Engineering Manager who works with
+                I&rsquo;m Muhammad Anas, a Delivery Manager who works with
                 SaaS and food-tech product companies as a fractional CTO,
                 engineering leadership consultant, and advisor. I take part-time
                 ownership of delivery, architecture, AI adoption, and

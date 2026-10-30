@@ -494,7 +494,7 @@ export default function Hero() {
             style={reduce ? undefined : { y: contentY }}
           >
             <Badge variants={item}>
-              <i /> Open to engineering leadership and fractional CTO work
+              <i /> Open to delivery leadership and fractional CTO work
             </Badge>
 
             <Title variants={item}>
@@ -508,7 +508,7 @@ export default function Hero() {
               ))}{' '}
               <Role>
                 <RotatingText
-                  words={[profile.role, 'Delivery Leader', 'Cloud-Native Architect', 'AI-Driven Builder']}
+                  words={[profile.role, 'Engineering Leader', 'Cloud-Native Architect', 'AI-Driven Builder']}
                 />{' '}
                 and Fractional CTO
               </Role>
@@ -568,7 +568,7 @@ export default function Hero() {
                   <source srcSet="/anas.webp" type="image/webp" />
                   <img
                     src="/anas.jpg"
-                    alt="Muhammad Anas, Engineering Manager and Fractional CTO"
+                    alt="Muhammad Anas, Delivery Manager and Fractional CTO"
                     width={760}
                     height={1014}
                   />
@@ -589,8 +589,8 @@ export default function Hero() {
                 <img src={current.logo} alt={`${current.company} logo`} />
               </PCIcon>
               <div>
-                <b>Engineering Manager</b>
-                <small>Leading multiple Agile teams at Flipdish</small>
+                <b>Delivery Manager</b>
+                <small>Running delivery for multiple Agile teams at Flipdish</small>
               </div>
             </PortraitCard>
           </Portrait>

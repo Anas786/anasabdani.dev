@@ -73,7 +73,7 @@ export default function WorkWithMe() {
           <Reveal i={2}>
             <SectionSub>
               You can book a call with me directly through Calendly. Whether you’re
-              hiring an Engineering Manager, looking for a fractional CTO, or scoping an
+              hiring a Delivery Manager, looking for a fractional CTO, or scoping an
               AI-assisted delivery problem, pick a time that suits you and we’ll talk it
               through.
             </SectionSub>

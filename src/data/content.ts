@@ -100,15 +100,15 @@ export interface NavLink {
 export const profile: Profile = {
   name: 'Muhammad Anas',
   shortName: 'Muhammad Anas',
-  role: 'Engineering Manager',
+  role: 'Delivery Manager',
   location: 'Karachi, Pakistan',
   tagline:
-    'Engineering Manager and fractional CTO with 10+ years leading multi-team organizations and shipping scalable, cloud-native platforms.',
+    'Delivery Manager and fractional CTO with 10+ years leading multi-team organizations and shipping scalable, cloud-native platforms.',
   intro:
     'I’m Muhammad Anas. I lead engineering teams that turn ambitious product bets into reliable, production-grade systems. That means owning delivery, architecture, and the people who make it happen.',
   email: 'anas_abdani@hotmail.com',
-  phone: '+966 57 220 1977',
-  phoneHref: '+966572201977',
+  phone: '+92 312 8411494',
+  phoneHref: '+923128411494',
   linkedin: 'https://www.linkedin.com/in/anas-abdani',
   linkedinLabel: 'linkedin.com/in/anas-abdani',
   linkedinRecommendations:
@@ -128,9 +128,9 @@ export const stats: Stat[] = [
 ];
 
 export const about: About = {
-  heading: 'Engineering leadership across delivery, architecture, and people',
+  heading: 'Delivery leadership across teams, architecture, and people',
   paragraphs: [
-    'I’m Muhammad Anas, an Engineering Manager based in Karachi, Pakistan, working remotely with teams across US, UK and EU time zones. Over the last decade I’ve grown from a hands-on engineer into a leader who owns the full delivery lifecycle, from sprint planning and backlog prioritization to architectural direction and production reliability.',
+    'I’m Muhammad Anas, a Delivery Manager based in Karachi, Pakistan, working remotely with teams across US, UK and EU time zones. Over the last decade I’ve grown from a hands-on engineer into a leader who owns the full delivery lifecycle, from sprint planning and backlog prioritization to architectural direction and production reliability.',
     'Today I lead multiple Agile teams at Flipdish, a restaurant ordering and management SaaS platform. I report directly to C-level leadership and keep engineering execution lined up with business priorities. I care a lot about observability, incident management, and building systems that stay reliable as they scale.',
     'My toolkit spans Node.js, TypeScript, React and React Native, serverless and microservices on AWS, and modern CI/CD. The part I spend most of my energy on, though, is creating the conditions where teams ship confidently and grow.',
   ],

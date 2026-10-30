@@ -1,6 +1,6 @@
 # anasabdani.dev
 
-Personal portfolio for **Muhammad Anas** — Engineering Manager (Flipdish).
+Personal portfolio for **Muhammad Anas** — Delivery Manager (Flipdish).
 Built as a single-page React + TypeScript site with styled-components and motion.
 
 > Live: [anasabdani.dev](https://anasabdani.dev)

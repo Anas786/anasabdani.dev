@@ -399,8 +399,8 @@ export default function Experience() {
           </Reveal>
           <Reveal i={2}>
             <SectionSub>
-              I started as a hands-on software engineer and now manage multiple Agile teams
-              as an Engineering Manager. Along the way I’ve owned delivery, cloud-native
+              I started as a hands-on software engineer and now run delivery for multiple Agile teams
+              as a Delivery Manager. Along the way I’ve owned releases, cloud-native
               architecture, and reliability at SaaS and product companies, mostly remote.
             </SectionSub>
           </Reveal>

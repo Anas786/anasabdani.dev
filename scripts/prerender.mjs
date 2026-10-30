@@ -102,7 +102,7 @@ const CASE_INDEX_LD = {
       '@id': `${SITE}/case-studies#page`,
       name: 'Engineering Leadership Case Studies',
       description:
-        'Case studies by Muhammad Anas, Engineering Manager and fractional CTO, covering AI-assisted delivery, customer onboarding automation, and production reliability at SaaS product companies.',
+        'Case studies by Muhammad Anas, Delivery Manager and fractional CTO, covering AI-assisted delivery, customer onboarding automation, and production reliability at SaaS product companies.',
       url: `${SITE}/case-studies`,
       author: PERSON,
       hasPart: [
@@ -180,7 +180,7 @@ const ROUTES = [
     out: join('case-studies', 'index.html'),
     title: 'Engineering Leadership Case Studies | Muhammad Anas',
     description:
-      'Case studies by Muhammad Anas, Engineering Manager and fractional CTO: AI-assisted delivery, customer onboarding automation, and production reliability in SaaS.',
+      'Case studies by Muhammad Anas, Delivery Manager and fractional CTO: AI-assisted delivery, customer onboarding automation, and production reliability in SaaS.',
     canonical: `${SITE}/case-studies`,
     jsonLd: CASE_INDEX_LD,
   },

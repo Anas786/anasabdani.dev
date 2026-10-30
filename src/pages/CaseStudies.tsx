@@ -244,7 +244,7 @@ export default function CaseStudies() {
             </Reveal>
             <Reveal i={2}>
               <Lede>
-                I&rsquo;m Muhammad Anas, an Engineering Manager and fractional
+                I&rsquo;m Muhammad Anas, a Delivery Manager and fractional
                 CTO. These case studies show how I lead engineering teams
                 through delivery, AI adoption, and reliability work at SaaS
                 product companies: what the problem was, how we approached it,
