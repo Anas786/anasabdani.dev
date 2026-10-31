@@ -1,0 +1,40 @@
+<svg width="1584" height="396" viewBox="0 0 1584 396" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1584" y2="396" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0b0b11" />
+      <stop offset="1" stop-color="#070709" />
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1480 40) rotate(140) scale(520)">
+      <stop stop-color="#22d3ee" stop-opacity="0.22" />
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 400) rotate(-40) scale(620)">
+      <stop stop-color="#3b82f6" stop-opacity="0.22" />
+      <stop offset="1" stop-color="#3b82f6" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="accent" x1="1270" y1="0" x2="1490" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3b82f6" />
+      <stop offset="1" stop-color="#22d3ee" />
+    </linearGradient>
+    <linearGradient id="bigA" x1="560" y1="380" x2="820" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3b82f6" stop-opacity="0.14" />
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0.08" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1584" height="396" fill="url(#bg)" />
+  <rect width="1584" height="396" fill="url(#glow1)" />
+  <rect width="1584" height="396" fill="url(#glow2)" />
+
+  <!-- decorative monogram, kept clear of the profile photo at bottom left -->
+  <path d="M580 350 L690 90 L800 350" stroke="url(#bigA)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <path d="M631 254 L749 254" stroke="url(#bigA)" stroke-width="22" stroke-linecap="round" fill="none" />
+
+  <!-- text block, right aligned -->
+  <text x="1490" y="118" text-anchor="end" font-family="'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="600" letter-spacing="6" fill="#22d3ee">DELIVERY MANAGER</text>
+  <text x="1494" y="196" text-anchor="end" font-family="'Helvetica Neue', Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-1.5" fill="#f5f5f7">Muhammad Anas</text>
+  <rect x="1270" y="220" width="220" height="5" rx="2.5" fill="url(#accent)" />
+  <text x="1490" y="270" text-anchor="end" font-family="'Helvetica Neue', Arial, sans-serif" font-size="27" font-weight="500" fill="#b6b6c2">Agile delivery for cloud-native SaaS teams</text>
+  <text x="1490" y="310" text-anchor="end" font-family="'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="400" fill="#7b7b88">PMP · PMI-ACP · AWS · Release and incident management</text>
+  <text x="1490" y="356" text-anchor="end" font-family="'Helvetica Neue', Arial, sans-serif" font-size="21" font-weight="600" fill="#5f5f6b">anasabdani.dev  ·  anas_abdani@hotmail.com</text>
+</svg>
